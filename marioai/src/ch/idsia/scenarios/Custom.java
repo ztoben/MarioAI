@@ -36,6 +36,7 @@ import marioManiacs.agents.*;
 
 import java.io.IOException;
 
+
 /**
  * Created by IntelliJ IDEA.
  * User: Sergey Karakovskiy, sergey@idsia.ch
