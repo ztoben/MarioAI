@@ -58,7 +58,9 @@ public static void main(String[] args)
         int seed = 0;
         do
         {
-            marioAIOptions.setLevelDifficulty(i);
+        	marioAIOptions.setFlatLevel(true);
+        	marioAIOptions.setFPS(100);
+            marioAIOptions.setLevelDifficulty(0);
             marioAIOptions.setLevelRandSeed(seed++);
             marioAIOptions.setAgent(agent);
             basicTask.setOptionsAndReset(marioAIOptions);

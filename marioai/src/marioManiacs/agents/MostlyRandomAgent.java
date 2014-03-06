@@ -23,14 +23,16 @@ public class MostlyRandomAgent extends BasicMarioAIAgent implements Agent
         {
         	actionReturn[0] = true; //left
         	actionReturn[1] = false; //right
+        	actionReturn[2] = true;
         }
         else
         {
         	actionReturn[0] = false; //left
         	actionReturn[1] = true; //right
+        	actionReturn[2]= false;
         }
         
-        actionReturn[2] = false; //down
+        //actionReturn[2] = false; //down
         actionReturn[3] = r.nextBoolean(); // jump
         actionReturn[4] = r.nextBoolean(); // run
         actionReturn[5] = false; //up
