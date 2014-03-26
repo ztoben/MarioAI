@@ -28,6 +28,7 @@
 package ch.idsia.scenarios;
 
 import ch.idsia.agents.Agent;
+import ch.idsia.agents.GAAgent;
 import ch.idsia.agents.controllers.ForwardAgent;
 import ch.idsia.benchmark.mario.environments.Environment;
 import ch.idsia.benchmark.tasks.BasicTask;
@@ -51,20 +52,23 @@ public static void main(String[] args)
 {
 //final String argsString = "-vis on";
     final MarioAIOptions marioAIOptions = new MarioAIOptions(args);
-    final Agent agent = new MostlyRandomAgent();
+    final Agent agent = new GAAgent();
     final BasicTask basicTask = new BasicTask(marioAIOptions);
     for (int i = 0; i < 10; ++i)
     {
         int seed = 0;
         do
         {
-        	marioAIOptions.setFlatLevel(true);
-        	marioAIOptions.setFPS(100);
+        	//marioAIOptions.setFlatLevel(true);
+        	//marioAIOptions.setFPS(1100);
+        	String tet = marioAIOptions.getEnemies();
+        	System.out.println(tet);
             marioAIOptions.setLevelDifficulty(0);
             marioAIOptions.setLevelRandSeed(seed++);
             marioAIOptions.setAgent(agent);
+
             basicTask.setOptionsAndReset(marioAIOptions);
-            basicTask.runSingleEpisode(1);
+            basicTask.runSingleEpisode(10);
             System.out.println(basicTask.getEnvironment().getEvaluationInfoAsString());
         } while (basicTask.getEnvironment().getEvaluationInfo().marioStatus != Environment.MARIO_STATUS_WIN);
     }
