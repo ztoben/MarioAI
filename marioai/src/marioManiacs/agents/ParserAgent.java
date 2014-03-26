@@ -10,6 +10,18 @@ import java.util.Random;
 import ch.idsia.agents.Agent;
 import ch.idsia.benchmark.mario.environments.Environment;
 
+/*
+ * getGapLength
+getDistanceToGap
+distanceToEnemy
+getMarioState
+getObstacleDistance
+getObstacleHeighth
+
+Secondary // 
+getDeadEnd
+ */
+
 public class ParserAgent implements Agent
 {
     protected String name;
