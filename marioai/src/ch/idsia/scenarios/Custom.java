@@ -28,7 +28,6 @@
 package ch.idsia.scenarios;
 
 import ch.idsia.agents.Agent;
-import ch.idsia.agents.GAAgent;
 import ch.idsia.agents.controllers.ForwardAgent;
 import ch.idsia.benchmark.mario.environments.Environment;
 import ch.idsia.benchmark.tasks.BasicTask;

@@ -1,5 +1,6 @@
-package ch.idsia.agents;
+package marioManiacs.agents;
 
+import ch.idsia.agents.Agent;
 import ch.idsia.agents.controllers.BasicMarioAIAgent;
 
 public class GAAgent extends BasicMarioAIAgent implements Agent{
