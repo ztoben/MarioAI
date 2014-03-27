@@ -10,6 +10,8 @@ import java.util.Random;
 import ch.idsia.agents.Agent;
 import ch.idsia.benchmark.mario.environments.Environment;
 
+//one grid spot is 32x32
+
 /*
  * getGapLength
 getDistanceToGap
