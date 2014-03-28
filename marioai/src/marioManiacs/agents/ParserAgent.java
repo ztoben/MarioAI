@@ -12,23 +12,27 @@ import ch.idsia.benchmark.mario.environments.Environment;
 
 //one grid spot is 32x32
 
-/*
- * getGapLength
-getDistanceToGap
-distanceToEnemy
-getMarioState
-getObstacleDistance
-getObstacleHeighth
-
-Secondary // 
-getDeadEnd
- */
+//if NO ground at bottom of grid, then there is a gap at this position
 
 public class ParserAgent implements Agent
 {
     protected String name;
-    public int x;
-    public int y;
+    protected byte[][] mainGrid;
+    protected byte[][] updatedGrid;
+    protected int[] marioPosition = new int[2];
+    protected int nodesToSearch = 7;//this represents x AND y dimensions, they should be the same and ODD
+    
+    protected int marioState; // 2 = fire; 1 = large; 0 = small
+    protected boolean bMarioCanJump;
+    protected boolean bMarioCanShoot;
+    
+    protected int gapLength;
+    protected int distanceToGap;
+    protected int distanceToEnemy;
+    protected int obstacleDistance;
+    protected int obstacleHeight;
+    protected int deadEnd;
+    
     
     public ParserAgent(String s)
     {
@@ -36,20 +40,93 @@ public class ParserAgent implements Agent
     }
     
     
-    
-    
-    public void parseEnvironment()
-    //Main method that takes in an environment and loads up current instance variables
+    public int getGapLength()
     {
-    	
+    	return gapLength;
     }
     
     
-    
-    public void setEnvironmentDetails(int x, int y)
-    //Defines how many nodes to search: x=horizontal (left and right) // y=vertical (up and down)
+    public int getDistanceToGap()
     {
+    	return distanceToGap;
+    }
+    
+    
+    public int getDistanceToEnemy()
+    {
+    	return distanceToEnemy;
+    }
+    
+    
+    public int getMarioState()// 2 = fire; 1 = large; 0 = small
+    {
+    	return marioState;
+    }
+    
+    
+    public int getObstacleDistance()
+    {
+    	return obstacleDistance;
+    }
+    
+    
+    public int getObstacleHeight()
+    {
+    	return obstacleHeight;
+    }
+    
+    
+    public int getDeadEnd()
+    {
+    	return deadEnd;
+    }
+    
+    
+    public void parseEnvironment(Environment environment)
+    //Main method that takes in an environment and loads up current instance variables
+    {
+    	mainGrid = environment.getMergedObservationZZ(0, 0);
+    	loadUpdatedGrid(nodesToSearch);
+    	marioPosition = environment.getMarioEgoPos();
     	
+    	int[] marioStatus = environment.getMarioState();
+    	
+    	marioState = marioStatus[1];
+    	bMarioCanShoot = (marioStatus[2] == 1);
+    	bMarioCanJump = (marioStatus[3] == 1);
+    	marioPosition[0] = 9;
+    	marioPosition[1] = 9;
+    	//input more stuff to load up here!!
+    	//current implementation is fake!!
+    	gapLength = 1;
+        distanceToGap = 1;
+        distanceToEnemy = 1;
+        obstacleDistance = 1;
+        obstacleHeight = 1;
+        deadEnd = 1;
+    }
+    
+    
+    public void loadUpdatedGrid(int a)
+    {
+    	updatedGrid = new byte[a][a];
+        updatedGrid[a/2][a/2] = mainGrid[marioPosition[0]][marioPosition[1]];
+
+        int base = marioPosition[0] - (a/2);
+
+        int x = base;
+        int y = base;
+
+        for (int i=0; i < a; i++)
+        {
+        	for (int j=0; j < a; j++)
+        	{
+        		updatedGrid[i][j] = mainGrid[x][y];
+        		y+=1;
+        	}
+        	x+=1;
+        	y = base;
+        }
     }
     
     
