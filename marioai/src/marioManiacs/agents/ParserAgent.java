@@ -33,6 +33,10 @@ public class ParserAgent implements Agent
     protected int obstacleHeight;
     protected int deadEnd;
     
+    //for dummy randomization
+    protected int tick;
+    protected Random generator = new Random();
+    
     
     public ParserAgent(String s)
     {
@@ -86,6 +90,8 @@ public class ParserAgent implements Agent
     //Main method that takes in an environment and loads up current instance variables
     {
     	mainGrid = environment.getMergedObservationZZ(0, 0);
+    	marioPosition[0] = 9;
+    	marioPosition[1] = 9;
     	loadUpdatedGrid(nodesToSearch);
     	marioPosition = environment.getMarioEgoPos();
     	
@@ -94,17 +100,29 @@ public class ParserAgent implements Agent
     	marioState = marioStatus[1];
     	bMarioCanShoot = (marioStatus[2] == 1);
     	bMarioCanJump = (marioStatus[3] == 1);
-    	marioPosition[0] = 9;
-    	marioPosition[1] = 9;
     	//input more stuff to load up here!!
     	//current implementation is fake!!
-    	gapLength = 1;
-        distanceToGap = 1;
-        distanceToEnemy = 1;
-        obstacleDistance = 1;
-        obstacleHeight = 1;
-        deadEnd = 1;
+    	if (tick == 0)
+    		randomizeValues();
+    	else if (tick == 42)
+    		tick=0;
+    	else
+    		tick+=1;
     }
+    
+    
+    //TEMPORARY FUNCTION
+    public void randomizeValues()
+    {
+    	gapLength = generator.nextInt(3);
+        distanceToGap = generator.nextInt(3);
+        distanceToEnemy = generator.nextInt(3);
+        obstacleDistance = generator.nextInt(3);
+        obstacleHeight = generator.nextInt(3);
+        deadEnd = generator.nextInt(3);
+    }
+    
+    
     
     
     public void loadUpdatedGrid(int a)
@@ -154,7 +172,7 @@ public class ParserAgent implements Agent
         actionReturn[5] = false; //up
         
         return actionReturn;
-       
+        
     }
    
     
@@ -188,10 +206,9 @@ public class ParserAgent implements Agent
 
 
 
-	@Override
-	public void integrateObservation(Environment environment) {
-		// TODO Auto-generated method stub
-		
+	public void integrateObservation(Environment environment) 
+	{
+		parseEnvironment(environment);
 	}
 
 
