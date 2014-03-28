@@ -53,6 +53,7 @@ public static void main(String[] args)
     final MarioAIOptions marioAIOptions = new MarioAIOptions(args);
     final Agent agent = new ParserAgent("bob");
     final BasicTask basicTask = new BasicTask(marioAIOptions);
+    marioAIOptions.setRecordFile("on");
     for (int i = 0; i < 10; ++i)
     {
         int seed = 0;
