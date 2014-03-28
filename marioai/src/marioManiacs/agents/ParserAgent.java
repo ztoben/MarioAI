@@ -18,7 +18,7 @@ public class ParserAgent implements Agent
 {
     protected String name;
     protected byte[][] mainGrid;
-    protected byte[][] updatedGrid;
+    protected byte[][] worldState;
     protected int[] marioPosition = new int[2];
     protected int nodesToSearch = 7;//this represents x AND y dimensions, they should be the same and ODD
     
@@ -127,8 +127,8 @@ public class ParserAgent implements Agent
     
     public void loadUpdatedGrid(int a)
     {
-    	updatedGrid = new byte[a][a];
-        updatedGrid[a/2][a/2] = mainGrid[marioPosition[0]][marioPosition[1]];
+    	worldState = new byte[a][a];
+        worldState[a/2][a/2] = mainGrid[marioPosition[0]][marioPosition[1]];
 
         int base = marioPosition[0] - (a/2);
 
@@ -139,7 +139,7 @@ public class ParserAgent implements Agent
         {
         	for (int j=0; j < a; j++)
         	{
-        		updatedGrid[i][j] = mainGrid[x][y];
+        		worldState[i][j] = mainGrid[x][y];
         		y+=1;
         	}
         	x+=1;
