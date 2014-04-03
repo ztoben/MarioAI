@@ -11,4 +11,6 @@ public class OutputNode implements NeuralNode
 	OutputNode[] feedingNodes;
 	boolean bFire;
 	//testing commit
+	//another commit
+	int commit;
 }
