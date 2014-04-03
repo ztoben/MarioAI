@@ -10,4 +10,5 @@ public class OutputNode implements NeuralNode
 	float internalWeight;
 	OutputNode[] feedingNodes;
 	boolean bFire;
+	//testing commit
 }
