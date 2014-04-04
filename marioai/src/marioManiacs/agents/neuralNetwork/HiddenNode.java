@@ -7,7 +7,56 @@ package marioManiacs.agents.neuralNetwork;
 
 public class HiddenNode implements NeuralNode
 {
+	boolean bFire;
 	float internalWeight;
 	InputNode[] inputNodes;
 	OutputNode[] outputNodes;
+	
+	
+	
+	public float getWeight() 
+	{
+		return internalWeight;
+	}
+	
+	
+	public boolean isFiring() 
+	{
+		return bFire;
+	}
+
+	
+	public NeuralNode[] getForwardConnections() 
+	{
+		return outputNodes;
+	}
+
+	
+	
+	public NeuralNode[] getRearConnections() 
+	{
+		return inputNodes;
+	}
+
+
+	public void setWeight(float weight) 
+	{
+		internalWeight = weight;
+	}
+
+
+	public void setFrontConnections(NeuralNode[] connections) 
+	{
+		outputNodes = (OutputNode[]) connections;
+	}
+
+
+	public void setRearConnections(NeuralNode[] connections) 
+	{
+		inputNodes = (InputNode[]) connections;
+	}
+
+
+	public void setInputWeights() {} // not implemented yet
+
 }

@@ -7,10 +7,55 @@ package marioManiacs.agents.neuralNetwork;
 
 public class OutputNode implements NeuralNode
 {
-	float internalWeight;
-	OutputNode[] feedingNodes;
 	boolean bFire;
-	//testing commit
-	//another commit
-	int commit;
+	float internalWeight;
+	HiddenNode[] hiddenNodes;
+	
+	
+	
+	public float getWeight() 
+	{
+		return internalWeight;
+	}
+	
+	
+	public boolean isFiring() 
+	{
+		return bFire;
+	}
+	
+	
+	
+	public NeuralNode[] getForwardConnections() // has no forward connections
+	{
+		return null;
+	}
+
+	
+	
+	public NeuralNode[] getRearConnections() 
+	{
+		return hiddenNodes;
+	}
+
+
+	public void setWeight(float weight)
+	{
+		internalWeight = weight;
+	}
+
+
+	public void setFrontConnections(NeuralNode[] connections) {}  // output nodes have no forward connections
+
+
+	
+	public void setRearConnections(NeuralNode[] connections)
+	{
+		hiddenNodes = (HiddenNode[]) connections;
+	}
+
+
+	public void setInputWeights() {} // not implemented yet
+	
+	
 }

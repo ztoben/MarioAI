@@ -7,6 +7,60 @@ package marioManiacs.agents.neuralNetwork;
 
 public class InputNode implements NeuralNode
 {
-	float value;
-	HiddenNode[] nodesToFeed;
+	boolean bFire;
+	int value;
+	float internalWeight;
+	HiddenNode[] hiddenNodes;
+	
+	
+	
+	public float getWeight()
+	{
+		return internalWeight;
+	}
+
+	
+	
+	public boolean isFiring() 
+	{
+		return bFire;
+	}
+
+
+	
+	public NeuralNode[] getForwardConnections() 
+	{
+		return hiddenNodes;
+	}
+
+
+	
+	public NeuralNode[] getRearConnections() // maybe we want to change this to be able to change the grid position it receives the value from??? (probly not)
+	{
+		return null;
+	}
+
+
+
+	@Override
+	public void setWeight(float weight) 
+	{
+		internalWeight = weight;
+	}
+
+
+
+	public void setFrontConnections(NeuralNode[] connections) 
+	{
+		hiddenNodes = (HiddenNode[]) connections;
+	}
+
+
+
+	public void setRearConnections(NeuralNode[] connections) {}  // has no rear connections
+
+
+
+
+	public void setInputWeights() {} // not implemented yet
 }

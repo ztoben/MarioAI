@@ -1,19 +1,35 @@
 package marioManiacs.agents.neuralNetwork;
-import marioManiacs.agents.neuralNetwork.*;
 
 /* Represents the neural network
- * Contains an array of Input nodes, Hidden nodes and Output nodes
- * It contains the methods that tell each node within the network to check the values and calculate whether or not to fire
+ * base interface class that contains methods all neural networks must implement
  */
 
-public class NeuralNetwork
+public interface NeuralNetwork
 {
-	InputNode[] inputNodes;
-	HiddenNode[] hiddenNodes;
-	OutputNode[] outputNodes;
+
 	
-	public NeuralNetwork()  //add to this constructor so that GA team can create new networks
-	{
-		
-	}
+	public NeuralNode[] getInputLayer();
+	
+	
+	public NeuralNode[] getHiddenLayer();
+
+	
+	public NeuralNode[] getOutputLayer();
+	
+	
+	public boolean[] inputData();
+	
+	
+	public void setHiddenLayerWeights();
+	
+	
+	public void setOutputLayerWeights();
+	
+	
+	public void setInputLayerConnections();
+	
+	
+	public void setHiddenLayerConnections();
+	
+	
 }
