@@ -21,6 +21,22 @@ public class GAModifierTest {
 	}
 	@Test
 	public void testGetMethod(){
-		
+		assertNotSame(population.getChromosome(0), population.getChromosome(1));
+	}
+	@Test
+	public void testGetMethodTwo(){
+		assertEquals(population.getChromosome(0),population.getChromosome(0));
+	}
+	@Test
+	public void testSize(){
+		Population pop = GAModifier.createFirstGeneration(200);
+		Population best = GAModifier.createFirstGeneration(50);
+		int originalSize = pop.getSize();
+		GAModifier.breedPopulation(pop,best,best.getChromosome(0));
+		System.out.println(originalSize);
+		for (int j = 0; j < originalSize; j++ ){
+			pop.removeChromosome(j);
+		}
+		assertEquals(201,pop.getSize());
 	}
 }
