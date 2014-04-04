@@ -42,6 +42,20 @@ public class BaseNeuralNetwork implements NeuralNetwork
 	
 	public boolean[] inputData() 
 	{
+		//input the data into input layer
+		//fire input nodes to hidden layer
+		//calculate weights in hidden layer and fire hidden layer to outputlayer
+		//calculate weights in output layer and set fire
+		
+		
+		for (int i=0; i < outputLayer.length; i++)
+		{
+			if (outputLayer[i].isFiring())
+				output[i] = true;
+			else
+				output[i] = false;
+		}
+		
 		return output;
 	}
 
