@@ -25,7 +25,7 @@ public class GAAgent extends BasicMarioAIAgent implements Agent{
     	// 2 == fire
     	
     	float enemyDistance = 200;
-    	if ((lastPosition - marioFloatPos[0]) >= 0 && (lastPosition - marioFloatPos[0]) < 2 ){
+    	if ((lastPosition - marioFloatPos[0]) >= 0 && (lastPosition - marioFloatPos[0]) < 5 ){
     		floatCounter +=1;
     	}
     	else{
@@ -34,28 +34,33 @@ public class GAAgent extends BasicMarioAIAgent implements Agent{
     	}   	
     	try {
     		marioPosition = marioFloatPos[0];
-    		enemyDistance = enemiesFloatPos[0];   		
+    		enemyDistance = enemiesFloatPos[1];   		
     	}
     	catch (ArrayIndexOutOfBoundsException e){
     	}	 	
-    	System.out.println(marioPosition);
+    	   	
     	
-    	float distanceToEnemy = enemyDistance - marioFloatPos[0];
-    	
-    	if (distanceToEnemy < -50 && distanceToEnemy > -70){
+    	float distanceToEnemy = enemyDistance - marioPosition;
+    	System.out.println(enemyDistance + "   Enemy Distance");
+    	System.out.println(enemiesFloatPos.length + "  Length array");
+    	System.out.println(distanceToEnemy);
+    // if close to Mario
+    	if (distanceToEnemy < 40){
     		actionReturn[3] = true;
     		System.out.println("Near the enemy");
     	}
-    	else if (floatCounter == 24){
-    		actionReturn[3] = true;
-    		floatCounter = 0;
-    	}
-    		
     	else{
     		actionReturn[3] = false;
-    	} 
-    	System.out.println(marioState[0]);
-    	if ((marioState[0] == 2) && distanceToEnemy < 250){
+    	}
+    	if (floatCounter == 24){
+    		actionReturn[3] = true;
+   // Maybe if hit 48 or something then need to go back before jumping
+    		
+    	}
+    	else if (floatCounter == 23){
+    		actionReturn[3] = false;
+    	}
+    	if ((marioMode == 2) && distanceToEnemy < 140){
     		actionReturn[4] = true;
     	}
     	
