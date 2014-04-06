@@ -23,6 +23,8 @@ public class Population {
 	public Chromosome removeChromosome(int chromoToGrab){
 		return this.population.remove(chromoToGrab);
 	}
+	
+	
 	public void printPopulation(){
 		for (int i = 0; i < population.size();i++){
 			population.get(i).chromosomeToString();
