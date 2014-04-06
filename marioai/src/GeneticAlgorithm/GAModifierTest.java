@@ -56,14 +56,17 @@ public class GAModifierTest {
 	}
 	@Test
 	public void testBestChromo(){
+		int[] bestIntArray = population.getChromosome(0).chromosome;
 		Chromosome bestChromo = population.getChromosome(0);
 		//Chromosome otherChromo = population.getChromosome(0);
 		for (int j = 0; j < 250; j++){
 			GAModifier.breedPopulation(population, best, bestChromo);	
-			}
+		}
 		bestChromo.chromosomeToString();
 		System.out.println();
-		best.getChromosome(0).chromosomeToString();
-		assertEquals(bestChromo,best.getChromosome(0));
+		for (int i = 0; i < bestIntArray.length; i++){
+			System.out.print(bestIntArray[i] + ", ");
+		}
+		assertEquals(bestChromo.chromosome,bestIntArray);
 	}
 }

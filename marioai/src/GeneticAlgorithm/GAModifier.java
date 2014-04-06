@@ -92,9 +92,9 @@ public class GAModifier {
 		}	
 		
 		for (int r = 0; r < 40; r++){
-			int [] mutatedArrayInt = new int[bestChromo.chromosome.length];
-			System.arraycopy(bestChromo.chromosome, 0, mutatedArrayInt, 0, mutatedArrayInt.length);
-			newPop.addToPopulation(GAModifier.randomMutation(new Chromosome(mutatedArrayInt)));
+			Chromosome modified = GAModifier.randomMutation(bestChromo);
+			newPop.addToPopulation(modified);
+			
 		}
 	
 	while (newPop.getSize() < 200){
