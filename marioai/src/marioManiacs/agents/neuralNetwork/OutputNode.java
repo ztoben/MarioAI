@@ -56,6 +56,20 @@ public class OutputNode implements NeuralNode
 
 
 	public void setInputWeights() {} // not implemented yet
+
+
+	@Override
+	public void setValue(float value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }

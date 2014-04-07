@@ -21,4 +21,8 @@ public interface NeuralNode
 	void setRearConnections(NeuralNode[] connections);
 	
 	void setInputWeights(); // not currently using
+	
+	void setValue(float value);
+	
+	void run();
 }
