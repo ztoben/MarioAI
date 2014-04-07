@@ -54,7 +54,6 @@ public class GAModifierTest {
 	public void testBestChromo(){
 		int[] bestIntArray = population.getChromosome(0).chromosome;
 		Chromosome bestChromo = population.getChromosome(0);
-		//Chromosome otherChromo = population.getChromosome(0);
 		for (int j = 0; j < 250; j++){
 			GAModifier.breedPopulation(population, best, bestChromo);	
 		}
