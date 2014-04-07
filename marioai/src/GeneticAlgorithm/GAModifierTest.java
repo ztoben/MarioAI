@@ -37,7 +37,7 @@ public class GAModifierTest {
 		for (int j = 0; j < originalSize; j++ ){
 			population.removeChromosome(j);
 		}
-		assertEquals(201,population.getSize());
+		assertEquals(200,population.getSize());
 	}
 	@Test
 	public void testSize2(){
@@ -48,7 +48,7 @@ public class GAModifierTest {
 				population.removeChromosome(k);
 			}
 		}
-		assertEquals(201,population.getSize());
+		assertEquals(200,population.getSize());
 	}
 	@Test
 	public void testBestChromo(){
