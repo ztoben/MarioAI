@@ -41,15 +41,18 @@ public class GAAgent extends BasicMarioAIAgent implements Agent{
     	   	
     	
     	float distanceToEnemy = enemyDistance - marioPosition;
-    	System.out.println(enemyDistance + "   Enemy Distance");
-    	System.out.println(enemiesFloatPos.length + "  Length array");
-    	System.out.println(distanceToEnemy);
+    	//System.out.println(enemyDistance + "   Enemy Distance");
+    	//System.out.println(enemiesFloatPos.length + "  Length array");
+    	//System.out.println(distanceToEnemy);
     // if close to Mario
-    	if (distanceToEnemy < 40){
+    	System.out.println(distanceToEnemy);
+    	if (distanceToEnemy < 40 && distanceToEnemy > -10){
     		actionReturn[3] = true;
-    		System.out.println("Near the enemy");
+    		System.out.println("1");
+    		//System.out.println("Near the enemy" + distanceToEnemy);
     	}
     	else{
+    		System.out.println("2");
     		actionReturn[3] = false;
     	}
     	if (floatCounter == 24){

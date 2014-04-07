@@ -1,7 +1,7 @@
 package GeneticAlgorithm;
 import java.util.ArrayList;
 import java.util.Random;
-
+import java.util.*;
 
 public class GAModifier {
 	
@@ -96,6 +96,8 @@ public class GAModifier {
 			newPop.addToPopulation(modified);
 			
 		}
+	Set set = new HashSet(newPop.population);	
+	newPop.population = new ArrayList(set);
 	
 	while (newPop.getSize() < 200){
 		newPop.addToPopulation(GAModifier.createRandomChromosome(new int[18]));

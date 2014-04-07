@@ -51,7 +51,7 @@ public static void main(String[] args)
 {
 //final String argsString = "-vis on";
     final MarioAIOptions marioAIOptions = new MarioAIOptions(args);
-    final Agent agent = new GAAgent();
+    final Agent agent = new MostlyRandomAgent();
     final BasicTask basicTask = new BasicTask(marioAIOptions);
     for (int i = 0; i < 10; ++i)
     {
@@ -62,11 +62,12 @@ public static void main(String[] args)
         	//marioAIOptions.setFPS(1100);
         	String tet = marioAIOptions.getEnemies();
         	System.out.println(tet);
-            marioAIOptions.setLevelDifficulty(0);
+            marioAIOptions.setLevelDifficulty(9);
             marioAIOptions.setLevelRandSeed(seed++);
             marioAIOptions.setAgent(agent);
+            //marioAIOptions.setFPS(99);
             basicTask.setOptionsAndReset(marioAIOptions);
-            basicTask.runSingleEpisode(10);
+            basicTask.runSingleEpisode(1);
             System.out.println(basicTask.getEnvironment().getEvaluationInfoAsString());
         } while (basicTask.getEnvironment().getEvaluationInfo().marioStatus != Environment.MARIO_STATUS_WIN);
     }
