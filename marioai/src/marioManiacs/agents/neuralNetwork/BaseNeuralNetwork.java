@@ -1,5 +1,7 @@
 package marioManiacs.agents.neuralNetwork;
 
+import java.util.Arrays;
+
 public class BaseNeuralNetwork implements NeuralNetwork
 {
 	InputNode[] inputLayer;
@@ -59,18 +61,42 @@ public class BaseNeuralNetwork implements NeuralNetwork
 		return output;
 	}
 
-	
-	
-	public void setHiddenLayerWeights() 
+	public void setWeights(float[] weights) 
 	{
-		;// DO THIS
+		float[] inputWeights = Arrays.copyOfRange(weights, 0, inputLayer.length - 1);
+		float[] hiddenWeights = Arrays.copyOfRange(weights, inputLayer.length, hiddenLayer.length - 1);
+		float[] outputWeights = Arrays.copyOfRange(weights, hiddenLayer.length, weights.length - 1);
+		
+		setInputLayerWeights(inputWeights);
+		setHiddenLayerWeights(hiddenWeights);
+		setOutputLayerWeights(outputWeights);
 	}
-
 	
-	
-	public void setOutputLayerWeights() 
+	public void setInputLayerWeights(float[] weights) 
 	{
-		;// DO THIS
+		/*
+		for (int i = 0; i < inputLayer.length; i++) {
+			inputLayer[i].setWeight(weights[i]);
+		}
+		*/;
+	}
+	
+	public void setHiddenLayerWeights(float[] weights) 
+	{
+		/*
+		for (int i = 0; i < hiddenLayer.length; i++) {
+			hiddenLayer[i].setWeight(weights[i]);
+		}
+		*/;
+	}
+	
+	public void setOutputLayerWeights(float[] weights) 
+	{
+		/*
+		for (int i = 0; i < outputLayer.length; i++) {
+			outputLayer[i].setWeight(weights[i]);
+		}
+		*/;
 	}
 
 	

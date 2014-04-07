@@ -65,7 +65,7 @@ public static void main(String[] args)
         	System.out.println(tet);
             marioAIOptions.setLevelDifficulty(0);
             marioAIOptions.setLevelRandSeed(seed++);
-            marioAIOptions.setAgent(agent);
+            //marioAIOptions.setAgent(agent);
 
             basicTask.setOptionsAndReset(marioAIOptions);
             basicTask.runSingleEpisode(10);

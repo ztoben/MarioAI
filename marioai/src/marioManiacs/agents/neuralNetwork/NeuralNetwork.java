@@ -19,6 +19,7 @@ public interface NeuralNetwork
 	
 	public boolean[] inputData();
 	
+	public void setInputLayerWeights();
 	
 	public void setHiddenLayerWeights();
 	
