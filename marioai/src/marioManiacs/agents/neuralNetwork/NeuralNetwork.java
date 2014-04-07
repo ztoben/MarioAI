@@ -19,12 +19,14 @@ public interface NeuralNetwork
 	
 	public boolean[] inputData();
 	
-	public void setInputLayerWeights();
 	
-	public void setHiddenLayerWeights();
+	public void setInputLayerWeights(float[] weights);
 	
 	
-	public void setOutputLayerWeights();
+	public void setHiddenLayerWeights(float[] weights);
+	
+	
+	public void setOutputLayerWeights(float[] weights);
 	
 	
 	public void setInputLayerConnections();
