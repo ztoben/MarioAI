@@ -163,6 +163,7 @@ List<Shell> shellsToCheck = new ArrayList<Shell>();
 public void checkShellCollide(Shell shell)
 {
     shellsToCheck.add(shell);
+    int i = (int)1 + (byte)0;
 }
 
 List<Fireball> fireballsToCheck = new ArrayList<Fireball>();

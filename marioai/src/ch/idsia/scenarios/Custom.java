@@ -65,7 +65,12 @@ public static void main(String[] args)
         	System.out.println(tet);
             marioAIOptions.setLevelDifficulty(0);
             marioAIOptions.setLevelRandSeed(seed++);
+<<<<<<< Upstream, based on origin/master
             marioAIOptions.setAgent(agent);
+=======
+            //marioAIOptions.setAgent(agent);
+
+>>>>>>> d45d4a8 initial creation of setting weights.
             basicTask.setOptionsAndReset(marioAIOptions);
             basicTask.runSingleEpisode(10);
             System.out.println(basicTask.getEnvironment().getEvaluationInfoAsString());
