@@ -7,6 +7,7 @@ public class BaseNeuralNetwork implements NeuralNetwork
 	InputNode[] inputLayer;
 	HiddenNode[] hiddenLayer;
 	OutputNode[] outputLayer;
+	int[] gridValues;
 	boolean[] output;
 
 	
@@ -48,7 +49,15 @@ public class BaseNeuralNetwork implements NeuralNetwork
 		//fire input nodes to hidden layer
 		//calculate weights in hidden layer and fire hidden layer to outputlayer
 		//calculate weights in output layer and set fire
+		for (int i=0; i < inputLayer.length; i++)
+		{
+			inputLayer[i].setValue(gridValues[i]);
+		}
 		
+		for (int i=0; i < hiddenLayer.length; i++) 
+		{
+			hiddenLayer[i].run();
+		}
 		
 		for (int i=0; i < outputLayer.length; i++)
 		{

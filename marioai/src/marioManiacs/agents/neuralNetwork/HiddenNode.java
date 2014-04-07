@@ -59,4 +59,16 @@ public class HiddenNode implements NeuralNode
 
 	public void setInputWeights() {} // not implemented yet
 
+
+	public void setValue(float value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
