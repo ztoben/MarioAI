@@ -43,7 +43,7 @@ public class InputNode implements NeuralNode
 
 
 	@Override
-	public void setWeight(float weight) 
+	public void setWeight(int weight) //NOT BEING USED
 	{
 		internalWeight = weight;
 	}
@@ -66,14 +66,17 @@ public class InputNode implements NeuralNode
 
 	
 
-	public void setValue(float value) {
+	public void setValue(int value) {
 		// TODO Auto-generated method stub
 		
 	}
 
 
 	
-	public void run() {
-		
+	public void run() 
+	{
+		;// DO THIS
+		//run through inputs, sum the values
+		//if greater than weight set firing to true, else false
 	}
 }
