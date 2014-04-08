@@ -176,7 +176,23 @@ public class ParserAgent implements Agent
     }
    
     
-    
+    public int[] convertInputData()
+    // Converts the world state into a single int[] for the neural network to read in
+    {
+    	int[] inputData = new int[nodesToSearch*nodesToSearch];
+    	int bubbles = 0;
+    	
+    	for (int i=0; i < worldState.length; i++)
+    	{
+    		for (int j=0; j < worldState[i].length; i++)
+    		{
+    			inputData[bubbles] = worldState[i][j];
+    			bubbles++;
+    		}
+    	}
+    	
+    	return inputData;
+    }
     
     
     
