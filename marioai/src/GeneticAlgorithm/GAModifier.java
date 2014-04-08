@@ -16,7 +16,7 @@ public class GAModifier {
 		return new Chromosome(chromosomeToMake);
 	}
 	
-	public static Population createFirstGeneration(int popSize, int rangeOfRandom, int lengthChromo){
+	public static Population createFirstGeneration(int popSize, int lengthChromo, int rangeOfRandom){
 		ArrayList<Chromosome> emptyPop = new ArrayList<Chromosome>();
 		Population populationOfGeneration = new Population(emptyPop);
 		for (int i = 0; i < popSize; i++){
@@ -55,38 +55,20 @@ public class GAModifier {
 		
 	}
 	
-	public static Population breedPopulation(Population newPop, Population bestPopulation, Chromosome bestChromo, int rangeOfRandom){
+	public static Population breedPopulation(Population newPop, Chromosome bestChromo, int rangeOfRandom){
 		Random testRandom = new Random();
 		newPop.addToPopulation(bestChromo);
 		
-		int popSize = bestPopulation.getSize();
 		int chromosomeSize = bestChromo.chromosome.length;
-		if (popSize < 40){
-			for (int randomIndex = 0; randomIndex < 60; randomIndex++){
-				newPop.addToPopulation(GAModifier.createRandomChromosome(new int[chromosomeSize], rangeOfRandom));
-			}
-			for (int z = 0; z< 40;z++){
-				int mutateInt = testRandom.nextInt(newPop.getSize());
-				Chromosome mutatedChromo = GAModifier.randomMutation(newPop.getChromosome(mutateInt));
-				newPop.addToPopulation(mutatedChromo);
-			}
+		for (int randomIndex = 0; randomIndex < 30; randomIndex++){
+			newPop.addToPopulation(GAModifier.createRandomChromosome(new int[chromosomeSize], rangeOfRandom));
 		}
-		else{
-			for (int bestIndex = 0; bestIndex < 59; bestIndex++){
-				int firstInt = testRandom.nextInt(bestPopulation.getSize());
-				int secondInt = testRandom.nextInt(bestPopulation.getSize());
-				Chromosome first = bestPopulation.getChromosome(firstInt);
-				Chromosome second = bestPopulation.getChromosome(secondInt);
-				Chromosome child = GAModifier.breedChromosome(first, second);
-				newPop.addToPopulation(child);
-			}
-			for (int mutateIndex = 0; mutateIndex < 40; mutateIndex++){
-				int mutateInt = testRandom.nextInt(bestPopulation.getSize());
-				Chromosome mutatedChromo = GAModifier.randomMutation(bestPopulation.getChromosome(mutateInt));
-				newPop.addToPopulation(mutatedChromo);
-			}			
+		for (int z = 0; z< 20;z++){
+			int mutateInt = testRandom.nextInt(newPop.getSize());
+			Chromosome mutatedChromo = GAModifier.randomMutation(newPop.getChromosome(mutateInt));
+			newPop.addToPopulation(mutatedChromo);
 		}
-		for (int j = 0; j < 60;j++){
+		for (int j = 0; j < 29;j++){
 			int firstInt = testRandom.nextInt(newPop.getSize());
 			int secondInt = testRandom.nextInt(newPop.getSize());
 			Chromosome first = newPop.getChromosome(firstInt);
@@ -94,11 +76,15 @@ public class GAModifier {
 			Chromosome child = GAModifier.breedChromosome(first, second);
 			newPop.addToPopulation(child);
 		}	
-		
-		for (int r = 0; r < 40; r++){
+		for (int l = 0; l < 10;l++){
+			int firstInt = testRandom.nextInt(newPop.getSize());
+			Chromosome first = newPop.getChromosome(firstInt);
+			Chromosome child = GAModifier.breedChromosome(first, bestChromo);
+			newPop.addToPopulation(child);
+		}
+		for (int r = 0; r < 10; r++){
 			Chromosome modified = GAModifier.randomMutation(bestChromo);
-			newPop.addToPopulation(modified);
-			
+			newPop.addToPopulation(modified);		
 		}
 	Set<Chromosome> set = new HashSet<Chromosome>(newPop.population);
 	newPop.population = new ArrayList<Chromosome>(set);
