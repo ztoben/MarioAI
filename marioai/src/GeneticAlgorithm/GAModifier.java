@@ -8,19 +8,19 @@ public class GAModifier {
 	
 	public GAModifier(){}
 
-	public static Chromosome createRandomChromosome(int[] chromosomeToMake){
+	public static Chromosome createRandomChromosome(int[] chromosomeToMake, int rangeOfRandom){
 		Random randy = new Random();
 		for (int i = 0; i < chromosomeToMake.length; i++){
-			chromosomeToMake[i] = randy.nextInt(9);	
+			chromosomeToMake[i] = randy.nextInt(rangeOfRandom);	
 		}
 		return new Chromosome(chromosomeToMake);
 	}
 	
-	public static Population createFirstGeneration(int popSize){
+	public static Population createFirstGeneration(int popSize, int rangeOfRandom, int lengthChromo){
 		ArrayList<Chromosome> emptyPop = new ArrayList<Chromosome>();
 		Population populationOfGeneration = new Population(emptyPop);
 		for (int i = 0; i < popSize; i++){
-			Chromosome intitalChromo = createRandomChromosome(new int[18]);
+			Chromosome intitalChromo = createRandomChromosome(new int[lengthChromo], rangeOfRandom);
 			populationOfGeneration.addToPopulation(intitalChromo);
 		}
 		return populationOfGeneration;
@@ -55,7 +55,7 @@ public class GAModifier {
 		
 	}
 	
-	public static Population breedPopulation(Population newPop, Population bestPopulation, Chromosome bestChromo){
+	public static Population breedPopulation(Population newPop, Population bestPopulation, Chromosome bestChromo, int rangeOfRandom){
 		Random testRandom = new Random();
 		newPop.addToPopulation(bestChromo);
 		
@@ -63,7 +63,7 @@ public class GAModifier {
 		int chromosomeSize = bestChromo.chromosome.length;
 		if (popSize < 40){
 			for (int randomIndex = 0; randomIndex < 60; randomIndex++){
-				newPop.addToPopulation(GAModifier.createRandomChromosome(new int[chromosomeSize]));
+				newPop.addToPopulation(GAModifier.createRandomChromosome(new int[chromosomeSize], rangeOfRandom));
 			}
 			for (int z = 0; z< 40;z++){
 				int mutateInt = testRandom.nextInt(newPop.getSize());
@@ -104,7 +104,7 @@ public class GAModifier {
 	newPop.population = new ArrayList<Chromosome>(set);
 	
 	while (newPop.getSize() < 200){
-		newPop.addToPopulation(GAModifier.createRandomChromosome(new int[chromosomeSize]));
+		newPop.addToPopulation(GAModifier.createRandomChromosome(new int[chromosomeSize],rangeOfRandom));
 	}
 	return newPop;
 	}
