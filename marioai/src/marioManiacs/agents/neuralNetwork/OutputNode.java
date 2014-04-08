@@ -39,7 +39,7 @@ public class OutputNode implements NeuralNode
 	}
 
 
-	public void setWeight(float weight)
+	public void setWeight(int weight)
 	{
 		internalWeight = weight;
 	}
@@ -59,16 +59,17 @@ public class OutputNode implements NeuralNode
 
 
 	@Override
-	public void setValue(float value) {
+	public void setValue(int value) {
 		// TODO Auto-generated method stub
 		
 	}
 
 
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		
+	public void run() 
+	{
+		;// DO THIS
+		//run through inputs, sum the values
+		//if greater than weight set firing to true, else false
 	}
 	
 	

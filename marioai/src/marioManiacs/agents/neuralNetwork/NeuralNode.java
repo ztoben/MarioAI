@@ -14,7 +14,7 @@ public interface NeuralNode
 	
 	NeuralNode[] getRearConnections(); // Returns an array of nodes that represents the nodes that this node is receiving info from
 	
-	void setWeight(float weight);
+	void setWeight(int weight);
 	
 	void setFrontConnections(NeuralNode[] connections);
 	
@@ -22,7 +22,7 @@ public interface NeuralNode
 	
 	void setInputWeights(); // not currently using
 	
-	void setValue(float value);
+	void setValue(int value);
 	
 	void run();
 }

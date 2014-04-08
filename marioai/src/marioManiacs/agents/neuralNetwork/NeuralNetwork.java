@@ -17,16 +17,16 @@ public interface NeuralNetwork
 	public NeuralNode[] getOutputLayer();
 	
 	
-	public boolean[] inputData();
+	public boolean[] inputData(int[] gridValues);
 	
 	
-	public void setInputLayerWeights(float[] weights);
+	public void setInputLayerWeights(int[] weights);
 	
 	
-	public void setHiddenLayerWeights(float[] weights);
+	public void setHiddenLayerWeights(int[] weights);
 	
 	
-	public void setOutputLayerWeights(float[] weights);
+	public void setOutputLayerWeights(int[] weights);
 	
 	
 	public void setInputLayerConnections();
