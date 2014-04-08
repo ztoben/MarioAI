@@ -6,9 +6,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class GAModifierTest {
-	Population population = GAModifier.createFirstGeneration(200);
-	Population best = GAModifier.createFirstGeneration(50);
-	Chromosome chromo = GAModifier.createRandomChromosome(new int[10]);
+	Population population = GAModifier.createFirstGeneration(200, 18, 10 );
+	Population best = GAModifier.createFirstGeneration(50, 18, 10);
+	Chromosome chromo = GAModifier.createRandomChromosome(new int[10], 10);
 
 	@Test
 	public void testInitialSize() {
@@ -30,9 +30,9 @@ public class GAModifierTest {
 	}
 	@Test
 	public void testSize(){
-		Population best = GAModifier.createFirstGeneration(50);
+		Population best = GAModifier.createFirstGeneration(50,18, 10);
 		int originalSize = population.getSize();
-		GAModifier.breedPopulation(population,best,best.getChromosome(0));
+		GAModifier.breedPopulation(population,best,best.getChromosome(0),10);
 		System.out.println(originalSize);
 		for (int j = 0; j < originalSize; j++ ){
 			population.removeChromosome(j);
@@ -43,7 +43,7 @@ public class GAModifierTest {
 	public void testSize2(){
 		for (int j = 0; j < 100; j++){
 			int originalSize = population.getSize();
-			GAModifier.breedPopulation(population,  best,  best.getChromosome(0));
+			GAModifier.breedPopulation(population,  best,  best.getChromosome(0),10);
 			for (int k = 0; k < originalSize-1; k++ ){
 				population.removeChromosome(k);
 			}
@@ -54,9 +54,8 @@ public class GAModifierTest {
 	public void testBestChromo(){
 		int[] bestIntArray = population.getChromosome(0).chromosome;
 		Chromosome bestChromo = population.getChromosome(0);
-		//Chromosome otherChromo = population.getChromosome(0);
 		for (int j = 0; j < 250; j++){
-			GAModifier.breedPopulation(population, best, bestChromo);	
+			GAModifier.breedPopulation(population, best, bestChromo,10);	
 		}
 		bestChromo.chromosomeToString();
 		System.out.println();
