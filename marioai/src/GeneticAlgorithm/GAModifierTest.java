@@ -34,6 +34,7 @@ public class GAModifierTest {
 		int originalSize = population.getSize();
 		GAModifier.breedPopulation(population,best,best.getChromosome(0));
 		System.out.println(originalSize);
+		
 		for (int j = 0; j < originalSize; j++ ){
 			population.removeChromosome(j);
 		}
