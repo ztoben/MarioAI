@@ -84,7 +84,7 @@ public class InputNode implements NeuralNode
 	
 	
 	
-	public void setValues(int[] myValues)
+	public void setValues()
 	{
 		;// hidden and output nodes only
 	}

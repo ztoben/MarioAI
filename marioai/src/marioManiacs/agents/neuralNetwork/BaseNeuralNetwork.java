@@ -117,6 +117,7 @@ public class BaseNeuralNetwork implements NeuralNetwork
 		int tempNumber;
 		HiddenNode[] tempHiddenNodes;
 		OutputNode[] tempOutputNodes;
+		InputNode[] tempInputNodes;
 		
 		
 		//SET INPUT LAYER FRONT CONNECTIONS
@@ -184,12 +185,34 @@ public class BaseNeuralNetwork implements NeuralNetwork
 				//if input node has hidden node in forward connections
 					//add input node to hidden node rear connections
 		
+		for (int i=0; i < hiddenLayer.length; i++)
+		{
+			for (int j=0; j < inputLayer.length; j++)
+			{
+				if (Arrays.asList(inputLayer[j].getForwardConnections()).contains(hiddenLayer[i])) // if input node has hidden node in its connections
+				{
+					//add input node to hidden node rear connections
+				}
+			}
+		}
+		
 		
 		//SET OUTPUT LAYER REAR CONNECTIONS
 		//for each node in output layer
 			//for each hidden layer node
 				//if hidden node has output node in forward connections
 					//add hidden node to output node rear connections
+		
+		for (int i=0; i < outputLayer.length; i++)
+		{
+			for (int j=0; j < hiddenLayer.length; j++)
+			{
+				if (Arrays.asList(hiddenLayer[j].getForwardConnections()).contains(outputLayer[i])) // if hidden node has output node in its connections
+				{
+					//add input node to hidden node rear connections
+				}
+			}
+		}
 	}
 	
 	

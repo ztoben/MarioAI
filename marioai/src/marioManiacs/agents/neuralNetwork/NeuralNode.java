@@ -22,7 +22,7 @@ public interface NeuralNode
 	
 	void setValue(int value);  //input node only
 	
-	void setValues(int[] myValues);  //hidden and output nodes only
+	void setValues();  //hidden and output nodes only
 	
 	void run();
 	

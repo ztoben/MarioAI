@@ -1,4 +1,5 @@
 package marioManiacs.agents.neuralNetwork;
+import java.util.*;
 
 /* Represents a node within the Hidden Layer of the Neural Network
  * This node contains a weight value, a list of the nodes it is connected to
@@ -61,11 +62,17 @@ public class HiddenNode implements NeuralNode
 	public void setInputWeights() {} // not implemented yet
 
 
-	public void setValues(int[] myValues)
+	public void setValues()
 	{
+		/*
 		for (int i=0; i < myValues.length; i++)
 		{
 			values[i] = myValues[i];
+		}
+		*/
+		for (int i=0; i<values.length; i++)
+		{
+			values[i] = 1;
 		}
 	}
 
@@ -86,6 +93,13 @@ public class HiddenNode implements NeuralNode
 	}
 
 	
+	public void addToRearConnections(InputNode node)
+	{
+		InputNode[] myNode = new InputNode[1];
+		myNode[0] = node;
+		
+		//inputNodes = ArrayUtils.addAll(inputNodes, node);
+	}
 	
 	public void setValue(int value) 
 	{
