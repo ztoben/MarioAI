@@ -9,12 +9,12 @@ public class InputNode implements NeuralNode
 {
 	boolean bFire;
 	int value;
-	float internalWeight;
+	int internalWeight;
 	HiddenNode[] hiddenNodes;
 	
 	
 	
-	public float getWeight()
+	public int getWeight() 
 	{
 		return internalWeight;
 	}
@@ -66,17 +66,26 @@ public class InputNode implements NeuralNode
 
 	
 
-	public void setValue(int value) {
-		// TODO Auto-generated method stub
-		
+	public void setValue(int inputData)
+	{
+		value = inputData;
 	}
 
 
 	
 	public void run() 
 	{
-		;// DO THIS
-		//run through inputs, sum the values
-		//if greater than weight set firing to true, else false
+		if (value > internalWeight)
+			bFire = true;
+		else
+			bFire = false;
+	}
+	
+	
+	
+	
+	public void setValues(int[] myValues)
+	{
+		;// hidden and output nodes only
 	}
 }

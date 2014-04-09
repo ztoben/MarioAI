@@ -6,9 +6,9 @@
 package marioManiacs.agents;
 
 import java.util.Random;
-
 import ch.idsia.agents.Agent;
 import ch.idsia.benchmark.mario.environments.Environment;
+import marioManiacs.agents.neuralNetwork.*;
 
 //one grid spot is 32x32
 
@@ -16,6 +16,8 @@ import ch.idsia.benchmark.mario.environments.Environment;
 
 public class ParserAgent implements Agent
 {
+	protected BaseNeuralNetwork myBrain;
+	
     protected String name;
     protected byte[][] mainGrid;
     protected byte[][] worldState;
@@ -149,34 +151,16 @@ public class ParserAgent implements Agent
     
     
     
+    //new stuff
+    
     public boolean[] getAction()
+    //CURRENTLY USES NEURAL NETWORK TO PRODUCE ACTION
     {
-        boolean[] actionReturn = new boolean[6];
-        Random r = new Random();
-        if (r.nextInt(100) < 10)
-        {
-        	actionReturn[0] = true; //left
-        	actionReturn[1] = false; //right
-        	actionReturn[2] = true;
-        }
-        else
-        {
-        	actionReturn[0] = false; //left
-        	actionReturn[1] = true; //right
-        	actionReturn[2]= false;
-        }
-        
-        //actionReturn[2] = false; //down
-        actionReturn[3] = r.nextBoolean(); // jump
-        actionReturn[4] = r.nextBoolean(); // run
-        actionReturn[5] = false; //up
-        
-        return actionReturn;
-        
+        return myBrain.think(inputData());
     }
    
     
-    public int[] convertInputData()
+    public int[] inputData()
     // Converts the world state into a single int[] for the neural network to read in
     {
     	int[] inputData = new int[nodesToSearch*nodesToSearch + 3];
@@ -207,13 +191,30 @@ public class ParserAgent implements Agent
     }
     
     
+    public void setNeuralNetwork(BaseNeuralNetwork network)
+    {
+    	myBrain = network;
+    }
     
     
+    /*creating a new agent will look something like:
+     * BaseNeuralNetwork network = new BaseNeuralNetwork(nodesToSearch*nodesToSearch,20);
+     * network.createRandomConnections();
+     * network.setWeights(myArrayOfWeights);
+     * 
+     * THIS IS INCOMPLETE BECAUSE WE ALSO NEED TO SET ***EACH*** NODE'S SET OF INPUT VALUES!!!
+     * 
+     * ParserAgent.setNeuralNetwork(network);
+     * 
+     * 
+     * while running: (we shouldn't need to change this... I think)
+     * 	ParserAgent.integrateObservation(environment);
+     * 	ParserAgent.getAction();
+     * 	
+     */
     
     
-    
-    
-    
+    // end new stuff
     
     
     

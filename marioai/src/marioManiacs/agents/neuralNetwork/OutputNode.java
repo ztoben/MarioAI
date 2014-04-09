@@ -8,12 +8,14 @@ package marioManiacs.agents.neuralNetwork;
 public class OutputNode implements NeuralNode
 {
 	boolean bFire;
-	float internalWeight;
-	HiddenNode[] hiddenNodes;
+	int internalWeight;
+	HiddenNode[] hiddenNodes;		//hiddenNodes and values are PARALLEL ARRAYS
+	int[] values;
 	
 	
 	
-	public float getWeight() 
+	
+	public int getWeight()
 	{
 		return internalWeight;
 	}
@@ -58,19 +60,35 @@ public class OutputNode implements NeuralNode
 	public void setInputWeights() {} // not implemented yet
 
 
-	@Override
-	public void setValue(int value) {
-		// TODO Auto-generated method stub
-		
+	public void setValues(int[] myValues)
+	{
+		for (int i=0; i < myValues.length; i++)
+		{
+			values[i] = myValues[i];
+		}
 	}
 
 
 	public void run() 
 	{
-		;// DO THIS
-		//run through inputs, sum the values
-		//if greater than weight set firing to true, else false
+		int sum = 0;
+		for (int i=0; i < values.length; i++)
+		{
+			if (hiddenNodes[i].isFiring())
+				sum += values[i];
+		}
+		
+		if (sum > internalWeight)//to fire or not to fire
+			bFire = true;
+		else
+			bFire = false;
 	}
 	
 	
+	
+	
+	public void setValue(int value) 
+	{
+		;// input nodes only
+	}
 }
