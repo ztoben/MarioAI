@@ -6,7 +6,7 @@ package marioManiacs.agents.neuralNetwork;
 
 public interface NeuralNode 
 {
-	float getWeight(); // Returns the weight OR value contained within the current node
+	int getWeight(); // Returns the weight OR value contained within the current node
 	
 	boolean isFiring(); // Returns a boolean representing whether or not the node is firing
 	
@@ -20,9 +20,11 @@ public interface NeuralNode
 	
 	void setRearConnections(NeuralNode[] connections);
 	
-	void setInputWeights(); // not currently using
+	void setValue(int value);  //input node only
 	
-	void setValue(int value);
+	void setValues(int[] myValues);  //hidden and output nodes only
 	
 	void run();
+	
+	void setInputWeights(); // not currently using
 }

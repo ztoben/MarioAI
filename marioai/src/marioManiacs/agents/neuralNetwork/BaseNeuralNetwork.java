@@ -1,6 +1,7 @@
 package marioManiacs.agents.neuralNetwork;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class BaseNeuralNetwork implements NeuralNetwork
 {
@@ -42,12 +43,8 @@ public class BaseNeuralNetwork implements NeuralNetwork
 
 	
 	
-	public boolean[] inputData(int[] gridValues) 
+	public boolean[] think(int[] gridValues) 
 	{
-		//input the data into input layer
-		//fire input nodes to hidden layer
-		//calculate weights in hidden layer and fire hidden layer to outputlayer
-		//calculate weights in output layer and set fire
 		for (int i=0; i < inputLayer.length; i++)
 		{
 			inputLayer[i].setValue(gridValues[i]);
@@ -111,6 +108,90 @@ public class BaseNeuralNetwork implements NeuralNetwork
 		}
 	}
 
+	
+	public void createRandomConnections()
+	{
+		Random generator = new Random();
+		int connectionSize = 5;
+		int[] nodeIndexContainer = new int[connectionSize];
+		int tempNumber;
+		HiddenNode[] tempHiddenNodes;
+		OutputNode[] tempOutputNodes;
+		
+		
+		//SET INPUT LAYER FRONT CONNECTIONS
+		for (int i=0; i < inputLayer.length; i++)//for each input node
+		{
+			int j = 0;
+			while (j < connectionSize)
+			{
+				tempNumber = generator.nextInt(hiddenLayer.length); // get a location of a hidden node
+				
+				if (!Arrays.asList(nodeIndexContainer).contains(tempNumber)) // if that number is not yet in array
+				{
+					nodeIndexContainer[j] = tempNumber;
+					j++;
+				}
+			}
+			
+			tempHiddenNodes = new HiddenNode[connectionSize];
+			
+			for (int z=0; z < connectionSize; z++)
+			{
+				tempHiddenNodes[z] = hiddenLayer[nodeIndexContainer[z]]; // grab the node from the index location
+			}
+			
+			inputLayer[i].setFrontConnections(tempHiddenNodes);
+		}
+		
+		
+		//SET HIDDEN LAYER FRONT CONNECTIONS
+		connectionSize = 2; // connect to 2 output nodes
+		nodeIndexContainer = new int[connectionSize];
+		
+		for (int i=0; i < hiddenLayer.length; i++)//for each input node
+		{
+			int j = 0;
+			while (j < connectionSize)
+			{
+				tempNumber = generator.nextInt(outputLayer.length); // get a location of a hidden node
+				
+				if (!Arrays.asList(nodeIndexContainer).contains(tempNumber)) // if that number is not yet in array
+				{
+					nodeIndexContainer[j] = tempNumber;
+					j++;
+				}
+			}
+			
+			tempOutputNodes = new OutputNode[connectionSize];
+			
+			for (int z=0; z < connectionSize; z++)
+			{
+				tempOutputNodes[z] = outputLayer[nodeIndexContainer[z]]; // grab the node from the index location
+			}
+			
+			outputLayer[i].setFrontConnections(tempOutputNodes);
+		}
+		
+		
+		
+		//DO THIS
+		
+		
+		//SET HIDDEN LAYER REAR CONNECTIONS
+		//for each node in hidden layer
+			//for each input layer node
+				//if input node has hidden node in forward connections
+					//add input node to hidden node rear connections
+		
+		
+		//SET OUTPUT LAYER REAR CONNECTIONS
+		//for each node in output layer
+			//for each hidden layer node
+				//if hidden node has output node in forward connections
+					//add hidden node to output node rear connections
+	}
+	
 	
 	
 	public void setInputLayerConnections() 

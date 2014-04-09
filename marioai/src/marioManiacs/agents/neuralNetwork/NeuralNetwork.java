@@ -17,7 +17,7 @@ public interface NeuralNetwork
 	public NeuralNode[] getOutputLayer();
 	
 	
-	public boolean[] inputData(int[] gridValues);
+	public boolean[] think(int[] gridValues);
 	
 	
 	public void setInputLayerWeights(int[] weights);
