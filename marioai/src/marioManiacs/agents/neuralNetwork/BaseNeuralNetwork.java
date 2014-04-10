@@ -117,8 +117,8 @@ public class BaseNeuralNetwork implements NeuralNetwork
 		int tempNumber;
 		HiddenNode[] tempHiddenNodes;
 		OutputNode[] tempOutputNodes;
-
-		InputNode[] tempInputNodes;
+		InputNode[] tempRearInputNodes = new InputNode[connectionSize];;
+		HiddenNode[] tempRearHiddenNodes = new HiddenNode[connectionSize];;
 		
 		
 		//SET INPUT LAYER FRONT CONNECTIONS
@@ -192,10 +192,12 @@ public class BaseNeuralNetwork implements NeuralNetwork
 			{
 				if (Arrays.asList(inputLayer[j].getForwardConnections()).contains(hiddenLayer[i])) // if input node has hidden node in its connections
 				{
-					//add input node to hidden node rear connections
+					tempRearInputNodes[j] = inputLayer[j];
 				}
 			}
+			hiddenLayer[i].setRearConnections(tempRearInputNodes);
 		}
+		
 		
 		
 		//SET OUTPUT LAYER REAR CONNECTIONS
@@ -210,9 +212,10 @@ public class BaseNeuralNetwork implements NeuralNetwork
 			{
 				if (Arrays.asList(hiddenLayer[j].getForwardConnections()).contains(outputLayer[i])) // if hidden node has output node in its connections
 				{
-					//add input node to hidden node rear connections
+					tempRearHiddenNodes[j] = hiddenLayer[j];
 				}
 			}
+			outputLayer[i].setRearConnections(tempRearHiddenNodes);
 		}
 	}
 	
