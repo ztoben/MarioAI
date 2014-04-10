@@ -60,11 +60,25 @@ public class OutputNode implements NeuralNode
 	public void setInputWeights() {} // not implemented yet
 
 
+<<<<<<< HEAD
 	public void setValues(int[] myValues)
 	{
 		for (int i=0; i < myValues.length; i++)
 		{
 			values[i] = myValues[i];
+=======
+	public void setValues()
+	{
+		/*
+		for (int i=0; i < myValues.length; i++)
+		{
+			values[i] = myValues[i];
+		}
+		*/
+		for (int i=0; i<values.length; i++)
+		{
+			values[i] = 1;
+>>>>>>> branch 'NeuralNetwork' of https://github.com/abacon45/MarioAI.git
 		}
 	}
 

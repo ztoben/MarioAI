@@ -117,6 +117,7 @@ public class BaseNeuralNetwork implements NeuralNetwork
 		int tempNumber;
 		HiddenNode[] tempHiddenNodes;
 		OutputNode[] tempOutputNodes;
+<<<<<<< HEAD
 		
 		
 		//SET INPUT LAYER FRONT CONNECTIONS
@@ -190,6 +191,104 @@ public class BaseNeuralNetwork implements NeuralNetwork
 			//for each hidden layer node
 				//if hidden node has output node in forward connections
 					//add hidden node to output node rear connections
+=======
+		InputNode[] tempInputNodes;
+		
+		
+		//SET INPUT LAYER FRONT CONNECTIONS
+		for (int i=0; i < inputLayer.length; i++)//for each input node
+		{
+			int j = 0;
+			while (j < connectionSize)
+			{
+				tempNumber = generator.nextInt(hiddenLayer.length); // get a location of a hidden node
+				
+				if (!Arrays.asList(nodeIndexContainer).contains(tempNumber)) // if that number is not yet in array
+				{
+					nodeIndexContainer[j] = tempNumber;
+					j++;
+				}
+			}
+			
+			tempHiddenNodes = new HiddenNode[connectionSize];
+			
+			for (int z=0; z < connectionSize; z++)
+			{
+				tempHiddenNodes[z] = hiddenLayer[nodeIndexContainer[z]]; // grab the node from the index location
+			}
+			
+			inputLayer[i].setFrontConnections(tempHiddenNodes);
+		}
+		
+		
+		//SET HIDDEN LAYER FRONT CONNECTIONS
+		connectionSize = 2; // connect to 2 output nodes
+		nodeIndexContainer = new int[connectionSize];
+		
+		for (int i=0; i < hiddenLayer.length; i++)//for each input node
+		{
+			int j = 0;
+			while (j < connectionSize)
+			{
+				tempNumber = generator.nextInt(outputLayer.length); // get a location of a hidden node
+				
+				if (!Arrays.asList(nodeIndexContainer).contains(tempNumber)) // if that number is not yet in array
+				{
+					nodeIndexContainer[j] = tempNumber;
+					j++;
+				}
+			}
+			
+			tempOutputNodes = new OutputNode[connectionSize];
+			
+			for (int z=0; z < connectionSize; z++)
+			{
+				tempOutputNodes[z] = outputLayer[nodeIndexContainer[z]]; // grab the node from the index location
+			}
+			
+			outputLayer[i].setFrontConnections(tempOutputNodes);
+		}
+		
+		
+		
+		//DO THIS
+		
+		
+		//SET HIDDEN LAYER REAR CONNECTIONS
+		//for each node in hidden layer
+			//for each input layer node
+				//if input node has hidden node in forward connections
+					//add input node to hidden node rear connections
+		
+		for (int i=0; i < hiddenLayer.length; i++)
+		{
+			for (int j=0; j < inputLayer.length; j++)
+			{
+				if (Arrays.asList(inputLayer[j].getForwardConnections()).contains(hiddenLayer[i])) // if input node has hidden node in its connections
+				{
+					//add input node to hidden node rear connections
+				}
+			}
+		}
+		
+		
+		//SET OUTPUT LAYER REAR CONNECTIONS
+		//for each node in output layer
+			//for each hidden layer node
+				//if hidden node has output node in forward connections
+					//add hidden node to output node rear connections
+		
+		for (int i=0; i < outputLayer.length; i++)
+		{
+			for (int j=0; j < hiddenLayer.length; j++)
+			{
+				if (Arrays.asList(hiddenLayer[j].getForwardConnections()).contains(outputLayer[i])) // if hidden node has output node in its connections
+				{
+					//add input node to hidden node rear connections
+				}
+			}
+		}
+>>>>>>> branch 'NeuralNetwork' of https://github.com/abacon45/MarioAI.git
 	}
 	
 	
