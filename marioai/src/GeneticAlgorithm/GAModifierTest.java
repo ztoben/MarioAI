@@ -28,22 +28,13 @@ public class GAModifierTest {
 	}
 	@Test
 	public void testSize(){ 
-		int originalSize = population.getSize();
-		System.out.println(originalSize);
-		GAModifier.breedPopulation(population,chromo,100);
-		for (int j = 0; j < originalSize; j++ ){
-			population.removeChromosome(j);
-		}
+		GAModifier.breedPopulation(population,chromo,100,100);
 		assertEquals(100,population.getSize());
 	}
 	@Test //
 	public void testSize2(){
 		for (int j = 0; j < 100; j++){
-			int originalSize = population.getSize();
-			GAModifier.breedPopulation(population, chromo,100);
-			for (int k = 0; k < originalSize-1; k++ ){
-				population.removeChromosome(k);
-			}
+			GAModifier.breedPopulation(population, chromo,100, 100);
 		}
 		assertEquals(100,population.getSize());
 	}
@@ -51,14 +42,16 @@ public class GAModifierTest {
 	public void testBestChromo(){
 		int[] bestIntArray = population.getChromosome(0).chromosome;
 		Chromosome bestChromo = population.getChromosome(0);
-		for (int j = 0; j < 250; j++){
-			GAModifier.breedPopulation(population, bestChromo,100);	
-		}
 		bestChromo.chromosomeToString();
 		System.out.println();
+		for (int j = 0; j < 250; j++){
+			GAModifier.breedPopulation(population, bestChromo,100,100 );
+		}
 		for (int i = 0; i < bestIntArray.length; i++){
 			System.out.print(bestIntArray[i] + ", ");
 		}
+		System.out.println();
 		assertEquals(bestChromo.chromosome,bestIntArray);
 	}
+
 }
