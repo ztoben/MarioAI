@@ -62,33 +62,6 @@ public class HiddenNode implements NeuralNode
 	public void setInputWeights() {} // not implemented yet
 
 
-<<<<<<< HEAD
-	public void setValues(int[] myValues)
-	{
-		for (int i=0; i < myValues.length; i++)
-		{
-			values[i] = myValues[i];
-		}
-	}
-
-
-	public void run() 
-	{
-		int sum = 0;
-		for (int i=0; i < values.length; i++)
-		{
-			if (inputNodes[i].isFiring())
-				sum += values[i];
-		}
-		
-		if (sum > internalWeight)//to fire or not to fire
-			bFire = true;
-		else
-			bFire = false;
-	}
-
-	
-=======
 	public void setValues()
 	{
 		/*
@@ -127,7 +100,6 @@ public class HiddenNode implements NeuralNode
 		
 		//inputNodes = ArrayUtils.addAll(inputNodes, node);
 	}
->>>>>>> branch 'NeuralNetwork' of https://github.com/abacon45/MarioAI.git
 	
 	public void setValue(int value) 
 	{

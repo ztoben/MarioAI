@@ -83,12 +83,8 @@ public class InputNode implements NeuralNode
 	
 	
 	
-	
-<<<<<<< HEAD
-	public void setValues(int[] myValues)
-=======
+
 	public void setValues()
->>>>>>> branch 'NeuralNetwork' of https://github.com/abacon45/MarioAI.git
 	{
 		;// hidden and output nodes only
 	}
