@@ -180,7 +180,7 @@ public class ParserAgent implements Agent
         
     	for (int i=0; i < worldState.length; i++)
     	{
-    		for (int j=0; j < worldState[i].length; i++)
+    		for (int j=0; j < worldState[i].length; j++)
     		{
     			inputData[bubbles] = worldState[i][j];
     			bubbles++;

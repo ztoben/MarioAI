@@ -33,6 +33,8 @@ import ch.idsia.benchmark.mario.environments.Environment;
 import ch.idsia.benchmark.tasks.BasicTask;
 import ch.idsia.tools.MarioAIOptions;
 import marioManiacs.agents.*;
+import marioManiacs.agents.neuralNetwork.BaseNeuralNetwork;
+import GeneticAlgorithm.*;
 
 import java.io.IOException;
 
@@ -51,34 +53,43 @@ public static void main(String[] args)
 {
 //final String argsString = "-vis on";
     final MarioAIOptions marioAIOptions = new MarioAIOptions(args);
-    final Agent agent = new ParserAgent("bob");
-    final BasicTask basicTask = new BasicTask(marioAIOptions);
-    marioAIOptions.setRecordFile("on");
-    for (int i = 0; i < 10; ++i)
-    {
+    final ParserAgent agent = new ParserAgent("bob");
+    Chromosome c;
+    
+    Population p = GAModifier.createFirstGeneration(100, 78, 3);
+    BaseNeuralNetwork base = new BaseNeuralNetwork(49, 20);
+    base.createRandomConnections();
+    for (int i = 0; i < 100; i++) {
+    	c = p.getChromosome(i);
+    	base.setWeights(c.chromosome);
+        agent.setNeuralNetwork(base);
+        
+        final BasicTask basicTask = new BasicTask(marioAIOptions);
+        marioAIOptions.setRecordFile("on");
         int seed = 0;
         do
         {
-        	//marioAIOptions.setFlatLevel(true);
-        	//marioAIOptions.setFPS(1100);
-        	String tet = marioAIOptions.getEnemies();
-        	System.out.println(tet);
+          	//marioAIOptions.setFlatLevel(true);
+           	//marioAIOptions.setFPS(1100);
+          	String tet = marioAIOptions.getEnemies();
+          	System.out.println(tet);
             marioAIOptions.setLevelDifficulty(0);
             marioAIOptions.setLevelRandSeed(seed++);
-            //marioAIOptions.setAgent(agent);
+            marioAIOptions.setAgent(agent);
             basicTask.setOptionsAndReset(marioAIOptions);
             basicTask.runSingleEpisode(10);
             System.out.println(basicTask.getEnvironment().getEvaluationInfoAsString());
         } while (basicTask.getEnvironment().getEvaluationInfo().marioStatus != Environment.MARIO_STATUS_WIN);
-    }
-    Runtime rt = Runtime.getRuntime();
-    try
-    {
-//            Process proc = rt.exec("/usr/local/bin/mate " + marioTraceFileName);
-        Process proc = rt.exec("python hello.py");
-    } catch (IOException e)
-    {
-        e.printStackTrace();
+        Runtime rt = Runtime.getRuntime();
+        try
+        {
+//                Process proc = rt.exec("/usr/local/bin/mate " + marioTraceFileName);
+            Process proc = rt.exec("python hello.py");
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        
     }
     System.exit(0);
 

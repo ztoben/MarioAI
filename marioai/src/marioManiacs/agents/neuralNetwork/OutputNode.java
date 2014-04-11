@@ -54,12 +54,18 @@ public class OutputNode implements NeuralNode
 	public void setRearConnections(NeuralNode[] connections)
 	{
 		hiddenNodes = (HiddenNode[]) connections;
+		setupValues();
+		setValues();
 	}
 
 
 	public void setInputWeights() {} // not implemented yet
 
-
+	private void setupValues() 
+	{
+		values = new int[hiddenNodes.length];
+	}
+	
 	public void setValues()
 	{
 		/*

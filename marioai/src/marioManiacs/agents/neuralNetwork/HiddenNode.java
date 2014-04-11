@@ -56,23 +56,18 @@ public class HiddenNode implements NeuralNode
 	public void setRearConnections(NeuralNode[] connections) 
 	{
 		inputNodes = (InputNode[]) connections;
+		setValues();
 	}
 
 
 	public void setInputWeights() {} // not implemented yet
 
-
 	public void setValues()
 	{
-		/*
-		for (int i=0; i < myValues.length; i++)
-		{
-			values[i] = myValues[i];
-		}
-		*/
+		values = new int[inputNodes.length];
 		for (int i=0; i<values.length; i++)
 		{
-			values[i] = 1;
+			values[i] = (int) (Math.random() * 5);
 		}
 	}
 

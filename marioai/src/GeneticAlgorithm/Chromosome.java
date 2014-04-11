@@ -1,7 +1,7 @@
 package GeneticAlgorithm;
 
 public class Chromosome {
-	int[] chromosome;
+	public int[] chromosome;
 	
 	public Chromosome(int[] child){
 		chromosome = child;

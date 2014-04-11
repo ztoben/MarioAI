@@ -12,8 +12,6 @@ public class InputNode implements NeuralNode
 	int internalWeight;
 	HiddenNode[] hiddenNodes;
 	
-	
-	
 	public int getWeight() 
 	{
 		return internalWeight;

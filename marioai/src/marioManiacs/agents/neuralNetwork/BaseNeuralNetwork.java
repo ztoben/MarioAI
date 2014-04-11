@@ -2,12 +2,13 @@ package marioManiacs.agents.neuralNetwork;
 
 import java.util.Arrays;
 import java.util.Random;
+import marioManiacs.agents.neuralNetwork.*;
 
 public class BaseNeuralNetwork implements NeuralNetwork
 {
-	InputNode[] inputLayer; // MUST BE ALL GRID SPACES + 3 (marioStates)
-	HiddenNode[] hiddenLayer;
-	OutputNode[] outputLayer;
+	private InputNode[] inputLayer; // MUST BE ALL GRID SPACES + 3 (marioStates)
+	private HiddenNode[] hiddenLayer;
+	private OutputNode[] outputLayer;
 	boolean[] output;
 
 	
@@ -18,6 +19,19 @@ public class BaseNeuralNetwork implements NeuralNetwork
 		hiddenLayer = new HiddenNode[numOfHiddenNodes];
 		outputLayer = new OutputNode[6];
 		output = new boolean[6];
+		
+		for (int i = 0; i < numOfInputNodes+3; i++) {
+			inputLayer[i] = new InputNode();
+		}
+		
+		for (int i = 0; i < numOfHiddenNodes; i++) {
+			hiddenLayer[i] = new HiddenNode();
+		}
+		
+		for (int i = 0; i < 6; i++) {
+			outputLayer[i] = new OutputNode();
+		}
+		
 	}
 	
 	
@@ -72,9 +86,9 @@ public class BaseNeuralNetwork implements NeuralNetwork
 	
 	public void setWeights(int[] weights) 
 	{
-		int[] inputWeights = Arrays.copyOfRange(weights, 0, inputLayer.length - 1);
-		int[] hiddenWeights = Arrays.copyOfRange(weights, inputLayer.length, hiddenLayer.length - 1);
-		int[] outputWeights = Arrays.copyOfRange(weights, hiddenLayer.length, weights.length - 1);
+		int[] inputWeights = Arrays.copyOfRange(weights, 0, inputLayer.length);
+		int[] hiddenWeights = Arrays.copyOfRange(weights, inputLayer.length, inputLayer.length + hiddenLayer.length);
+		int[] outputWeights = Arrays.copyOfRange(weights, inputLayer.length + hiddenLayer.length, weights.length);
 		
 		setInputLayerWeights(inputWeights);
 		setHiddenLayerWeights(hiddenWeights);
@@ -86,7 +100,7 @@ public class BaseNeuralNetwork implements NeuralNetwork
 	{
 		for (int i = 0; i < inputLayer.length; i++) 
 		{
-			inputLayer[i].setWeight(weights[i]);
+			this.inputLayer[i].setWeight(weights[i]);
 		}
 	}
 	
@@ -172,7 +186,7 @@ public class BaseNeuralNetwork implements NeuralNetwork
 				tempOutputNodes[z] = outputLayer[nodeIndexContainer[z]]; // grab the node from the index location
 			}
 			
-			outputLayer[i].setFrontConnections(tempOutputNodes);
+			hiddenLayer[i].setFrontConnections(tempOutputNodes);
 		}
 		
 		
@@ -185,6 +199,7 @@ public class BaseNeuralNetwork implements NeuralNetwork
 			//for each input layer node
 				//if input node has hidden node in forward connections
 					//add input node to hidden node rear connections
+		int count = 0;
 		
 		for (int i=0; i < hiddenLayer.length; i++)
 		{
@@ -192,10 +207,16 @@ public class BaseNeuralNetwork implements NeuralNetwork
 			{
 				if (Arrays.asList(inputLayer[j].getForwardConnections()).contains(hiddenLayer[i])) // if input node has hidden node in its connections
 				{
-					tempRearInputNodes[j] = inputLayer[j];
+					if (count == 5) {
+						break;
+					} else {
+						tempRearInputNodes[count] = inputLayer[j];
+						count++;
+					}
 				}
 			}
 			hiddenLayer[i].setRearConnections(tempRearInputNodes);
+			count = 0;
 		}
 		
 		
@@ -205,6 +226,7 @@ public class BaseNeuralNetwork implements NeuralNetwork
 			//for each hidden layer node
 				//if hidden node has output node in forward connections
 					//add hidden node to output node rear connections
+		count = 0;
 		
 		for (int i=0; i < outputLayer.length; i++)
 		{
@@ -212,9 +234,15 @@ public class BaseNeuralNetwork implements NeuralNetwork
 			{
 				if (Arrays.asList(hiddenLayer[j].getForwardConnections()).contains(outputLayer[i])) // if hidden node has output node in its connections
 				{
-					tempRearHiddenNodes[j] = hiddenLayer[j];
+					if (count == 5) {
+						break;
+					} else {
+						tempRearHiddenNodes[count] = hiddenLayer[j];
+						count++;
+					}
 				}
 			}
+			count = 0;
 			outputLayer[i].setRearConnections(tempRearHiddenNodes);
 		}
 	}
