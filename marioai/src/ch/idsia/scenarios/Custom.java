@@ -59,39 +59,56 @@ public static void main(String[] args)
     Population p = GAModifier.createFirstGeneration(100, 78, 3);
     BaseNeuralNetwork base = new BaseNeuralNetwork(49, 20);
     base.createRandomConnections();
-    for (int i = 0; i < 100; i++) {
-    	c = p.getChromosome(i);
-    	base.setWeights(c.chromosome);
-        agent.setNeuralNetwork(base);
-        
-        final BasicTask basicTask = new BasicTask(marioAIOptions);
-        marioAIOptions.setRecordFile("on");
-        int seed = 0;
-        do
-        {
-          	//marioAIOptions.setFlatLevel(true);
-           	//marioAIOptions.setFPS(1100);
-          	String tet = marioAIOptions.getEnemies();
-          	System.out.println(tet);
-            marioAIOptions.setLevelDifficulty(0);
-            marioAIOptions.setLevelRandSeed(seed++);
-            marioAIOptions.setAgent(agent);
-            basicTask.setOptionsAndReset(marioAIOptions);
-            basicTask.runSingleEpisode(10);
-            System.out.println(basicTask.getEnvironment().getEvaluationInfoAsString());
-        } while (basicTask.getEnvironment().getEvaluationInfo().marioStatus != Environment.MARIO_STATUS_WIN);
-        Runtime rt = Runtime.getRuntime();
-        try
-        {
-//                Process proc = rt.exec("/usr/local/bin/mate " + marioTraceFileName);
-            Process proc = rt.exec("python hello.py");
-        } catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-        
-    }
-    System.exit(0);
-
-}
+    Chromosome bestChromo;
+    int generationNumber = 0;
+    int bestScore = 0;
+   
+    while (true){ // Base this off score eventually or just certain number of generations
+    	if (generationNumber != 0){
+    		GAModifier.breedPopulation(p, p.getChromosome(0), 3);
+    	}
+    	System.out.println("Generation "+ generationNumber);
+	    for (int i = 0; i < 100; i++) {
+	    	c = p.getChromosome(i);
+	    	base.setWeights(c.chromosome);
+	        agent.setNeuralNetwork(base);
+	        
+	        final BasicTask basicTask = new BasicTask(marioAIOptions);
+	        marioAIOptions.setRecordFile("on");
+	        int seed = 0;
+	        do
+	        {
+	          	//marioAIOptions.setFlatLevel(true);
+	           	//marioAIOptions.setFPS(1100);
+	          	String tet = marioAIOptions.getEnemies();
+	          	System.out.println(tet);
+	          	marioAIOptions.setFPS(1000);
+	          	marioAIOptions.setGameViewer(false);
+	            marioAIOptions.setLevelDifficulty(0);
+	            marioAIOptions.setLevelRandSeed(seed++);
+	            marioAIOptions.setAgent(agent);
+	            basicTask.setOptionsAndReset(marioAIOptions);
+	            basicTask.runSingleEpisode(10);
+	            //System.out.println(basicTask.getEnvironment().getEvaluationInfoAsString());
+	            if ( bestScore < basicTask.getEvaluationInfo().computeBasicFitness()){
+	            	bestScore = basicTask.getEvaluationInfo().computeBasicFitness();
+	            	bestChromo = p.getChromosome(i);
+	            }
+	            System.out.println(bestScore);
+	        } while (basicTask.getEnvironment().getEvaluationInfo().marioStatus != Environment.MARIO_STATUS_WIN);
+	        Runtime rt = Runtime.getRuntime();
+	        try
+	        {
+	//                Process proc = rt.exec("/usr/local/bin/mate " + marioTraceFileName);
+	            Process proc = rt.exec("python hello.py");
+	        } catch (IOException e)
+	        {
+	            e.printStackTrace();
+	        }
+	        
+	    }
+	    System.exit(0);
+	    generationNumber++;
+	}
+	}
 }
