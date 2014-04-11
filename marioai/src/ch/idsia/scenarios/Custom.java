@@ -49,8 +49,8 @@ import java.io.IOException;
 
 public class Custom
 {
-public static void main(String[] args)
-{
+	public static void main(String[] args)
+	{
 //final String argsString = "-vis on";
     final MarioAIOptions marioAIOptions = new MarioAIOptions(args);
     final ParserAgent agent = new ParserAgent("bob");
@@ -59,43 +59,60 @@ public static void main(String[] args)
     Population p = GAModifier.createFirstGeneration(100, 78, 3);
     BaseNeuralNetwork base = new BaseNeuralNetwork(49, 20);
     base.createRandomConnections();
-    Chromosome bestChromo;
-    int generationNumber = 0;
+    Chromosome bestChromo = p.getChromosome(0);
+    int j = 0;
     int bestScore = 0;
-   
-    while (true){ // Base this off score eventually or just certain number of generations
-    	if (generationNumber != 0){
-    		GAModifier.breedPopulation(p, p.getChromosome(0), 3);
+    int newScore = 0;
+    while(true){ // Base this off score eventually or just certain number of generations
+    	if (j != 0){
+    		GAModifier.breedPopulation(p, bestChromo, 3);
     	}
-    	System.out.println("Generation "+ generationNumber);
-	    for (int i = 0; i < 100; i++) {
-	    	c = p.getChromosome(i);
-	    	base.setWeights(c.chromosome);
+    	System.out.println("Generation "+ j + " Score - " +bestScore);
+	    for (int i = 0; i < 101; i++) {
+	    	if (i != 100){
+	    		c = p.getChromosome(i);
+	    		base.setWeights(c.chromosome);
+	    	}
+	    	else{
+	    		base.setWeights(bestChromo.chromosome);
+	    	}
 	        agent.setNeuralNetwork(base);
 	        
 	        final BasicTask basicTask = new BasicTask(marioAIOptions);
 	        marioAIOptions.setRecordFile("on");
 	        int seed = 0;
-	        do
-	        {
+	     //   do
+	       // { Took out do while loop. Wasn't allowing us to move on to next chromosomes in population
 	          	//marioAIOptions.setFlatLevel(true);
 	           	//marioAIOptions.setFPS(1100);
 	          	String tet = marioAIOptions.getEnemies();
-	          	System.out.println(tet);
+	          	//System.out.println(tet);
 	          	marioAIOptions.setFPS(1000);
-	          	marioAIOptions.setGameViewer(false);
+	          	marioAIOptions.setVisualization(false); // Sets whether GUI comes up or not
 	            marioAIOptions.setLevelDifficulty(0);
 	            marioAIOptions.setLevelRandSeed(seed++);
+	            if (i == 100 && j %10 == 0 && j!=0 ){
+		    		marioAIOptions.setVisualization(true); // Sets whether GUI comes up or not
+		    	}
+		    	else{
+		    		marioAIOptions.setVisualization(false); // Sets whether GUI comes up or not
+		    	}
 	            marioAIOptions.setAgent(agent);
 	            basicTask.setOptionsAndReset(marioAIOptions);
-	            basicTask.runSingleEpisode(10);
-	            //System.out.println(basicTask.getEnvironment().getEvaluationInfoAsString());
-	            if ( bestScore < basicTask.getEvaluationInfo().computeBasicFitness()){
-	            	bestScore = basicTask.getEvaluationInfo().computeBasicFitness();
+	            basicTask.runSingleEpisode(1);
+	            //marioAIOptions.isVisualization();
+	            try
+		        {
+		            newScore = basicTask.getEvaluationInfo().computeBasicFitness();
+		        } catch (NullPointerException e)
+		        {
+		        	newScore = 0;
+		        }
+	            if ( bestScore < newScore){
+	            	bestScore = newScore;
 	            	bestChromo = p.getChromosome(i);
 	            }
-	            System.out.println(bestScore);
-	        } while (basicTask.getEnvironment().getEvaluationInfo().marioStatus != Environment.MARIO_STATUS_WIN);
+	          //} while (basicTask.getEnvironment().getEvaluationInfo().marioStatus != Environment.MARIO_STATUS_WIN);
 	        Runtime rt = Runtime.getRuntime();
 	        try
 	        {
@@ -103,12 +120,13 @@ public static void main(String[] args)
 	            Process proc = rt.exec("python hello.py");
 	        } catch (IOException e)
 	        {
-	            e.printStackTrace();
+	            //e.printStackTrace();
 	        }
 	        
 	    }
-	    System.exit(0);
-	    generationNumber++;
-	}
+	   // System.exit(0);
+	    j++;
+		}
+   // System.exit(0);
 	}
 }
