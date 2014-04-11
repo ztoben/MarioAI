@@ -80,6 +80,9 @@ public class BaseNeuralNetwork implements NeuralNetwork
 				output[i] = false;
 		}
 		
+		if (output[1] == true)
+			output[0] = false; // set left false if pushing right
+		
 		return output;
 	}
 

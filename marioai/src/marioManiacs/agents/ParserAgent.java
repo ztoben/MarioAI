@@ -147,14 +147,14 @@ public class ParserAgent implements Agent
         		
         		switch (temp)
 				{
-					case 0: temp = 5; 		break;
+					case 0: temp = 1; 		break;
 					case -20: temp = 1; 	break;
 					case -22: temp = 1; 	break;
 					case 2: temp = 2; 		break;
 					case -60: temp = 3; 	break;
 					case -80: temp = 4; 	break;
 					case -90: temp = 4; 	break;
-					default: temp = 0;
+					default: temp = 6;
 				}
         		
         		worldState[i][j] = (byte) temp;
