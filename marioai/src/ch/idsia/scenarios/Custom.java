@@ -112,14 +112,15 @@ public class Custom
 		        {
 		        	newScore = 0;
 		        }
+	            if (bestScore <newScore && newScore > 250 ){
+	            	System.out.println(bestScore);
+	            	//bestChromo.chromosomeToString();   	
+	            }
 	            if ( bestScore < newScore){
 	            	bestScore = newScore;
 	            	bestChromo = p.getChromosome(i);
 	            }
-	            if (bestScore > 250 ){
-	            	System.out.println(bestScore);
-	            	bestChromo.chromosomeToString();   	
-	            }
+	          
 	          //} while (basicTask.getEnvironment().getEvaluationInfo().marioStatus != Environment.MARIO_STATUS_WIN);
 	        Runtime rt = Runtime.getRuntime();
 	        try
