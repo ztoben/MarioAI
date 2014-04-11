@@ -67,6 +67,7 @@ public class Custom
         BaseNeuralNetwork base = new BaseNeuralNetwork(49, 20);
         base.createRandomConnections();
        // Moved Neural network in here just cause felt like getting little to no variation no matter how long it ran
+        // Make it so can print connections of neural network so can manually enter those later?
     	if (j != 0){
     		GAModifier.breedPopulation(p, bestChromo, 3);
     	}
@@ -116,8 +117,8 @@ public class Custom
 	            	bestChromo = p.getChromosome(i);
 	            }
 	            if (bestScore > 250 ){
-	            	bestChromo.chromosomeToString();
-	            	
+	            	System.out.println(bestScore);
+	            	bestChromo.chromosomeToString();   	
 	            }
 	          //} while (basicTask.getEnvironment().getEvaluationInfo().marioStatus != Environment.MARIO_STATUS_WIN);
 	        Runtime rt = Runtime.getRuntime();
