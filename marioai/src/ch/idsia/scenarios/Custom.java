@@ -57,13 +57,16 @@ public class Custom
     Chromosome c;
     
     Population p = GAModifier.createFirstGeneration(100, 78, 3);
-    BaseNeuralNetwork base = new BaseNeuralNetwork(49, 20);
-    base.createRandomConnections();
+    //BaseNeuralNetwork base = new BaseNeuralNetwork(49, 20);
+    //base.createRandomConnections();
     Chromosome bestChromo = p.getChromosome(0);
     int j = 0;
     int bestScore = 0;
     int newScore = 0;
     while(true){ // Base this off score eventually or just certain number of generations
+        BaseNeuralNetwork base = new BaseNeuralNetwork(49, 20);
+        base.createRandomConnections();
+       // Moved Neural network in here just cause felt like getting little to no variation no matter how long it ran
     	if (j != 0){
     		GAModifier.breedPopulation(p, bestChromo, 3);
     	}
@@ -111,6 +114,10 @@ public class Custom
 	            if ( bestScore < newScore){
 	            	bestScore = newScore;
 	            	bestChromo = p.getChromosome(i);
+	            }
+	            if (bestScore > 250 ){
+	            	bestChromo.chromosomeToString();
+	            	
 	            }
 	          //} while (basicTask.getEnvironment().getEvaluationInfo().marioStatus != Environment.MARIO_STATUS_WIN);
 	        Runtime rt = Runtime.getRuntime();
