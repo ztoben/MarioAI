@@ -91,7 +91,7 @@ public class ParserAgent implements Agent
     public void parseEnvironment(Environment environment)
     //Main method that takes in an environment and loads up current instance variables
     {
-    	mainGrid = environment.getMergedObservationZZ(0, 0);
+    	mainGrid = environment.getMergedObservationZZ(0, 2);
     	marioPosition[0] = 9;
     	marioPosition[1] = 9;
     	loadUpdatedGrid(nodesToSearch);
@@ -136,12 +136,28 @@ public class ParserAgent implements Agent
 
         int x = base;
         int y = base;
+        
+        int temp;
 
         for (int i=0; i < a; i++)
         {
         	for (int j=0; j < a; j++)
         	{
-        		worldState[i][j] = mainGrid[x][y];
+        		temp = mainGrid[x][y];
+        		
+        		switch (temp)
+				{
+					case 0: temp = 5; 		break;
+					case -20: temp = 1; 	break;
+					case -22: temp = 1; 	break;
+					case 2: temp = 2; 		break;
+					case -60: temp = 3; 	break;
+					case -80: temp = 4; 	break;
+					case -90: temp = 4; 	break;
+					default: temp = 0;
+				}
+        		
+        		worldState[i][j] = (byte) temp;
         		y+=1;
         	}
         	x+=1;
