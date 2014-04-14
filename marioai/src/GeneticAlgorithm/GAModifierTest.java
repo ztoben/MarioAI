@@ -31,9 +31,9 @@ public class GAModifierTest {
 		int originalSize = population.getSize();
 		System.out.println(originalSize);
 		GAModifier.breedPopulation(population,chromo,100);
-		for (int j = 0; j < originalSize; j++ ){
-			population.removeChromosome(j);
-		}
+		//for (int j = 0; j < originalSize; j++ ){
+			//population.removeChromosome(0);
+		//}
 		assertEquals(100,population.getSize());
 	}
 	@Test //
@@ -41,9 +41,7 @@ public class GAModifierTest {
 		for (int j = 0; j < 100; j++){
 			int originalSize = population.getSize();
 			GAModifier.breedPopulation(population, chromo,100);
-			for (int k = 0; k < originalSize-1; k++ ){
-				population.removeChromosome(k);
-			}
+
 		}
 		assertEquals(100,population.getSize());
 	}

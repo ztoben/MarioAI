@@ -63,6 +63,7 @@ public class Custom
     int j = 0;
     int bestScore = 0;
     int newScore = 0;
+    int bestCounter = 0;
     while(true){ // Base this off score eventually or just certain number of generations
         BaseNeuralNetwork base = new BaseNeuralNetwork(49, 20);
         base.createRandomConnections();
@@ -95,12 +96,22 @@ public class Custom
 	          	marioAIOptions.setVisualization(false); // Sets whether GUI comes up or not
 	            marioAIOptions.setLevelDifficulty(0);
 	            marioAIOptions.setLevelRandSeed(seed++);
-	            if (i == 100 && j %10 == 0 && j!=0 ){
-		    		marioAIOptions.setVisualization(true); // Sets whether GUI comes up or not
-		    	}
-		    	else{
-		    		marioAIOptions.setVisualization(false); // Sets whether GUI comes up or not
-		    	}
+	           // if (i == 100 && j %10 == 0 && j!=0 ){
+		    	//	marioAIOptions.setVisualization(true); // Sets whether GUI comes up or not
+		    	//}
+		    	//else{
+		    //		marioAIOptions.setVisualization(false); // Sets whether GUI comes up or not
+		    	//}
+	            if (bestCounter == 1){
+	            	marioAIOptions.setVisualization(true);
+	            	base.setWeights(bestChromo.chromosome);
+	            	bestCounter = 0;
+	            	marioAIOptions.setFPS(70);
+	            }
+	            else{
+	            	marioAIOptions.setVisualization(false);
+	            	marioAIOptions.setFPS(1000);
+	            }
 	            marioAIOptions.setAgent(agent);
 	            basicTask.setOptionsAndReset(marioAIOptions);
 	            basicTask.runSingleEpisode(1);
@@ -112,11 +123,9 @@ public class Custom
 		        {
 		        	newScore = 0;
 		        }
-	            if (bestScore <newScore && newScore > 250 ){
-	            	System.out.println(bestScore);
-	            	//bestChromo.chromosomeToString();   	
-	            }
+
 	            if ( bestScore < newScore){
+	            	bestCounter = 1;
 	            	bestScore = newScore;
 	            	bestChromo = p.getChromosome(i);
 	            }
