@@ -83,7 +83,7 @@ public class Custom
 	        agent.setNeuralNetwork(base);
 	        
 	        final BasicTask basicTask = new BasicTask(marioAIOptions);
-	        marioAIOptions.setRecordFile("on");
+	        //marioAIOptions.setRecordFile("on");
 	        int seed = 0;
 	     //   do
 	       // { Took out do while loop. Wasn't allowing us to move on to next chromosomes in population
