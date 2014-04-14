@@ -147,14 +147,58 @@ public class ParserAgent implements Agent
         		
         		switch (temp)
 				{
-					case 0: temp = 1; 		break;
-					case -20: temp = 1; 	break;
-					case -22: temp = 1; 	break;
-					case 2: temp = 2; 		break;
-					case -60: temp = 3; 	break;
-					case -80: temp = 4; 	break;
-					case -90: temp = 4; 	break;
-					default: temp = 6;
+					case -20: temp = 1; 	break; // breakable brick
+					case -22: temp = 1; 	break; // unbreakable brick
+					
+					case 1: temp = 2;		break; // coin
+					case 2: temp = 2; 		break; // mushroom
+					
+					case 0: temp = 3; 		break; // empty grid
+					
+					case -60: temp = 4; 	break; // non-traverable terrain
+					case -80: temp = 4; 	break; // cannon
+					case -90: temp = 4; 	break; // flowerpot
+					
+					default: temp = 6; 			   // enemies
+					
+					case 5: temp = 100;		break; // princess
+					
+					/*
+					empty = 0
+					breakable brick = -20
+					unbreakable brick = -22
+					coin = 2
+					bordercannot pass = -60
+					cannonMuzzle = -82
+					cannontrunk = -80
+					flowerpot = -90
+					borderhill = -62
+					ladder = 61
+					topofladder = 61
+					princess = 5
+
+					GOOMBA = 80;
+					GOOMBA_WINGED = 95;
+					RED_KOOPA = 82;
+					RED_KOOPA_WINGED = 97;
+					GREEN_KOOPA = 81;
+					GREEN_KOOPA_WINGED = 96;
+					BULLET_BILL = 84;
+					SPIKY = 93;
+					SPIKY_WINGED = 99;
+					ENEMY_FLOWER = 11;
+					ENEMY_FLOWER = 91;
+					WAVE_GOOMBA = 98;
+					SHELL = 13;
+					MUSHROOM = 2;
+					GREEN_MUSHROOM = 9;
+					PRINCESS = 49;
+					FIRE_FLOWER = 3;
+					PARTICLE = 21;
+					SPARCLE = 22;
+					COIN = 1;
+					FIREBALL = 25;
+					*/
 				}
         		
         		worldState[i][j] = (byte) temp;
@@ -166,8 +210,6 @@ public class ParserAgent implements Agent
     }
     
     
-    
-    //new stuff
     
     public boolean[] getAction()
     //CURRENTLY USES NEURAL NETWORK TO PRODUCE ACTION
@@ -213,24 +255,6 @@ public class ParserAgent implements Agent
     }
     
     
-    /*creating a new agent will look something like:
-     * BaseNeuralNetwork network = new BaseNeuralNetwork(nodesToSearch*nodesToSearch,20);
-     * network.createRandomConnections();
-     * network.setWeights(myArrayOfWeights);
-     * 
-     * THIS IS INCOMPLETE BECAUSE WE ALSO NEED TO SET ***EACH*** NODE'S SET OF INPUT VALUES!!!
-     * 
-     * ParserAgent.setNeuralNetwork(network);
-     * 
-     * 
-     * while running: (we shouldn't need to change this... I think)
-     * 	ParserAgent.integrateObservation(environment);
-     * 	ParserAgent.getAction();
-     * 	
-     */
-    
-    
-    // end new stuff
     
     
     
