@@ -6,4 +6,10 @@ public class SectorConnectionNeuralNetwork extends BaseNeuralNetwork
 	{
 		super(numOfInputNodes, numOfHiddenNodes);
 	}
+
+	
+	public void createConnections()
+	{
+		
+	}
 }

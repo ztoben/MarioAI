@@ -2,7 +2,6 @@ package marioManiacs.agents.neuralNetwork;
 
 import java.util.Arrays;
 import java.util.Random;
-import marioManiacs.agents.neuralNetwork.*;
 
 public class BaseNeuralNetwork implements NeuralNetwork
 {
@@ -20,15 +19,18 @@ public class BaseNeuralNetwork implements NeuralNetwork
 		outputLayer = new OutputNode[6];
 		output = new boolean[6];
 		
-		for (int i = 0; i < numOfInputNodes+3; i++) {
+		for (int i = 0; i < numOfInputNodes+3; i++) 
+		{
 			inputLayer[i] = new InputNode();
 		}
 		
-		for (int i = 0; i < numOfHiddenNodes; i++) {
+		for (int i = 0; i < numOfHiddenNodes; i++) 
+		{
 			hiddenLayer[i] = new HiddenNode();
 		}
 		
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < 6; i++) 
+		{
 			outputLayer[i] = new OutputNode();
 		}
 		
@@ -126,7 +128,7 @@ public class BaseNeuralNetwork implements NeuralNetwork
 	}
 
 	
-	public void createRandomConnections()
+	public void createConnections()
 	{
 		Random generator = new Random();
 		int connectionSize = 5;
@@ -237,9 +239,10 @@ public class BaseNeuralNetwork implements NeuralNetwork
 			{
 				if (Arrays.asList(hiddenLayer[j].getForwardConnections()).contains(outputLayer[i])) // if hidden node has output node in its connections
 				{
-					if (count == 5) {
+					if (count == 5) 
 						break;
-					} else {
+					else 
+					{
 						tempRearHiddenNodes[count] = hiddenLayer[j];
 						count++;
 					}

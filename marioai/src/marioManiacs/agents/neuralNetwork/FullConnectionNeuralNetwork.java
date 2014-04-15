@@ -6,4 +6,10 @@ public class FullConnectionNeuralNetwork extends BaseNeuralNetwork
 	{
 		super(numOfInputNodes, numOfHiddenNodes);
 	}
+	
+	
+	public void createConnections()
+	{
+		
+	}
 }
