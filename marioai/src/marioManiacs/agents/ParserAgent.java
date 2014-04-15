@@ -152,6 +152,7 @@ public class ParserAgent implements Agent
 					
 					case 1: temp = 2;		break; // coin
 					case 2: temp = 2; 		break; // mushroom
+					case 9: temp = 2;		break; // green mushroom
 					
 					case 0: temp = 3; 		break; // empty grid
 					
@@ -159,9 +160,10 @@ public class ParserAgent implements Agent
 					case -80: temp = 4; 	break; // cannon
 					case -90: temp = 4; 	break; // flowerpot
 					
-					default: temp = 6; 			   // enemies
-					
+					case 49: temp = 100;	break; // princess
 					case 5: temp = 100;		break; // princess
+					
+					default: temp = 5; 			   // enemies
 					
 					/*
 					empty = 0
