@@ -8,6 +8,7 @@ public class SectorConnectionNeuralNetwork extends BaseNeuralNetwork
 	}
 
 	
+	@Override
 	public void createConnections()
 	{
 		

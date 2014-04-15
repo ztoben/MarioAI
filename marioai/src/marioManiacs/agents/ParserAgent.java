@@ -102,8 +102,6 @@ public class ParserAgent implements Agent
     	marioState = marioStatus[1];
     	bMarioCanShoot = (marioStatus[2] == 1);
     	bMarioCanJump = (marioStatus[3] == 1);
-    	//input more stuff to load up here!!
-    	//current implementation is fake!!
     	if (tick == 0)
     		randomizeValues();
     	else if (tick == 42)

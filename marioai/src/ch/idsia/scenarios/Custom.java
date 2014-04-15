@@ -30,10 +30,8 @@ package ch.idsia.scenarios;
 import ch.idsia.benchmark.tasks.BasicTask;
 import ch.idsia.tools.MarioAIOptions;
 import marioManiacs.agents.*;
-import marioManiacs.agents.neuralNetwork.BaseNeuralNetwork;
+import marioManiacs.agents.neuralNetwork.*;
 import GeneticAlgorithm.*;
-
-import java.io.IOException;
 
 
 public class Custom
@@ -92,7 +90,7 @@ public class Custom
 					marioAIOptions.setVisualization(true);
 					base.setWeights(bestChromo.chromosome);
 					bestCounter = 0;
-					marioAIOptions.setFPS(70);
+					marioAIOptions.setFPS(1000);
 				}
 				else
 				{

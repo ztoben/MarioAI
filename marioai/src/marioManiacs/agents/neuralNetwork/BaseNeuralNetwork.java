@@ -5,10 +5,10 @@ import java.util.Random;
 
 public class BaseNeuralNetwork implements NeuralNetwork
 {
-	private InputNode[] inputLayer; // MUST BE ALL GRID SPACES + 3 (marioStates)
-	private HiddenNode[] hiddenLayer;
-	private OutputNode[] outputLayer;
-	boolean[] output;
+	protected InputNode[] inputLayer; // MUST BE ALL GRID SPACES + 3 (marioStates)
+	protected HiddenNode[] hiddenLayer;
+	protected OutputNode[] outputLayer;
+	protected boolean[] output;
 
 	
 	
