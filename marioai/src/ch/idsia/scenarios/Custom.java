@@ -47,24 +47,22 @@ public class Custom
 		int seed = 1;
 		Chromosome c;
 
-		Population p = GAModifier.createFirstGeneration(100, 78, 3);
+		Population p = GAModifier.createFirstGeneration(100, 1160, 52);
 		Chromosome bestChromo = p.getChromosome(0);
-		
+		BaseNeuralNetwork base = new FullConnectionNeuralNetwork(52,20);
+		base.createConnections();
 		while(true)
 		{ // Base this off score eventually or just certain number of generations
-			BaseNeuralNetwork base = new BaseNeuralNetwork(49, 20);
-			base.createConnections();
-			// Moved Neural network in here just cause felt like getting little to no variation no matter how long it ran
-			// Make it so can print connections of neural network so can manually enter those later?
+
 			if (j != 0)
 			{
-				GAModifier.breedPopulation(p, bestChromo, 3);
+				GAModifier.breedPopulation(p, bestChromo, 52);
 			}
 			
 			System.out.println("Generation "+ j + " Score - " +bestScore);
 			j++;
 			
-			for (int i = 0; i < 101; i++) // 100 generations
+			for (int i = 0; i < 101; i++) 
 			{
 				if (i != 100)
 				{
@@ -79,8 +77,6 @@ public class Custom
 				agent.setNeuralNetwork(base);
 
 				final BasicTask basicTask = new BasicTask(marioAIOptions);
-				marioAIOptions.setFPS(1000);
-				marioAIOptions.setVisualization(false); // Sets whether GUI comes up or not
 				marioAIOptions.setLevelDifficulty(0);
 				marioAIOptions.setLevelRandSeed(seed);
 				//seed++;
@@ -90,7 +86,7 @@ public class Custom
 					marioAIOptions.setVisualization(true);
 					base.setWeights(bestChromo.chromosome);
 					bestCounter = 0;
-					marioAIOptions.setFPS(1000);
+					marioAIOptions.setFPS(90);
 				}
 				else
 				{

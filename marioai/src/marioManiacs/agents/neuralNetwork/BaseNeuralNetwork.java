@@ -14,12 +14,12 @@ public class BaseNeuralNetwork implements NeuralNetwork
 	
 	public BaseNeuralNetwork(int numOfInputNodes, int numOfHiddenNodes)
 	{
-		inputLayer = new InputNode[numOfInputNodes+3];  // MUST BE ALL GRID SPACES + 3 (marioStates)
+		inputLayer = new InputNode[numOfInputNodes];  // MUST BE ALL GRID SPACES + 3 (marioStates)
 		hiddenLayer = new HiddenNode[numOfHiddenNodes];
 		outputLayer = new OutputNode[6];
 		output = new boolean[6];
 		
-		for (int i = 0; i < numOfInputNodes+3; i++) 
+		for (int i = 0; i < numOfInputNodes; i++) 
 		{
 			inputLayer[i] = new InputNode();
 		}
