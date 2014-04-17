@@ -9,6 +9,7 @@ public class BaseNeuralNetwork implements NeuralNetwork
 	protected HiddenNode[] hiddenLayer;
 	protected OutputNode[] outputLayer;
 	protected boolean[] output;
+	int tick = 0;
 
 	
 	
@@ -84,6 +85,13 @@ public class BaseNeuralNetwork implements NeuralNetwork
 		
 		if (output[1] == true)
 			output[0] = false; // set left false if pushing right
+		
+		tick++;
+		if (tick == 75)
+		{
+			tick=0;
+			output[3] = false;
+		}
 		
 		return output;
 	}

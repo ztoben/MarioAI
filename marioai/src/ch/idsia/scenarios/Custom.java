@@ -89,7 +89,7 @@ public class Custom
 					marioAIOptions.setVisualization(true);
 					base.setWeights(bestChromo.chromosome);
 					bestCounter = 0;
-					marioAIOptions.setFPS(90);
+					marioAIOptions.setFPS(70);
 					bestChromo.chromosomeToString();
 					System.out.println();
 				}
