@@ -106,6 +106,9 @@ public class BaseNeuralNetwork implements NeuralNetwork
 		setHiddenLayerThresholds(hiddenThresholds);
 		setOutputLayerThresholds(outputThresholds);
 		setHiddenLayerWeights(hiddenWeights);
+		
+		for (int i=0; i < outputLayer.length; i++)
+			outputLayer[i].setValues();
 	}
 	
 	
