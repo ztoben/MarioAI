@@ -1,9 +1,9 @@
 package GeneticAlgorithm;
 
 public class Chromosome {
-	public int[] chromosome;
+	public float[] chromosome;
 	
-	public Chromosome(int[] child){
+	public Chromosome(float[] child){
 		chromosome = child;
 	}
 

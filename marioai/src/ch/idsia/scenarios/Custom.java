@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009-2010, Sergey Karakovskiy and Julian Togelius
+// * Copyright (c) 2009-2010, Sergey Karakovskiy and Julian Togelius
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,8 +46,11 @@ public class Custom
 		int bestCounter = 0;
 		int seed = 1;
 		Chromosome c;
-
-		Population p = GAModifier.createFirstGeneration(100, 1160, 52);
+		int inputLayerSize = 52;
+		int hiddenLayerSize = 20;
+		int outputLayerSize = 6;
+		int populationSize = 100;
+		Population p = GAModifier.createFirstGeneration(inputLayerSize, hiddenLayerSize, outputLayerSize, populationSize);
 		Chromosome bestChromo = p.getChromosome(0);
 		BaseNeuralNetwork base = new FullConnectionNeuralNetwork(52,20);
 		base.createConnections();
@@ -56,7 +59,7 @@ public class Custom
 
 			if (j != 0)
 			{
-				GAModifier.breedPopulation(p, bestChromo, 52);
+				GAModifier.breedPopulation(p, bestChromo,inputLayerSize, hiddenLayerSize, outputLayerSize);
 			}
 			
 			System.out.println("Generation "+ j + " Score - " +bestScore);
@@ -87,6 +90,8 @@ public class Custom
 					base.setWeights(bestChromo.chromosome);
 					bestCounter = 0;
 					marioAIOptions.setFPS(90);
+					bestChromo.chromosomeToString();
+					System.out.println();
 				}
 				else
 				{
