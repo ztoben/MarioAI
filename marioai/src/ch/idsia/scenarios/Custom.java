@@ -69,12 +69,15 @@ public class Custom
 			{
 				if (i != 100)
 				{
+					marioAIOptions.setVisualization(false);
 					c = p.getChromosome(i);
 					base.setWeights(c.chromosome);
 				}
 				else
 				{
 					base.setWeights(bestChromo.chromosome);
+					marioAIOptions.setVisualization(true);
+					marioAIOptions.setFPS(90);
 				}
 				
 				agent.setNeuralNetwork(base);
@@ -84,9 +87,9 @@ public class Custom
 				marioAIOptions.setLevelRandSeed(seed);
 				//seed++;
 
-				if (bestCounter == 1)
+	/*			if (bestCounter == 1)
 				{
-					marioAIOptions.setVisualization(true);
+					//marioAIOptions.setVisualization(true);
 					base.setWeights(bestChromo.chromosome);
 					bestCounter = 0;
 					marioAIOptions.setFPS(70);
@@ -98,7 +101,7 @@ public class Custom
 					marioAIOptions.setVisualization(false);
 					marioAIOptions.setFPS(1000);
 				}
-				
+				*/
 				marioAIOptions.setAgent(agent);
 				basicTask.setOptionsAndReset(marioAIOptions);
 				basicTask.runSingleEpisode(1);
@@ -116,7 +119,10 @@ public class Custom
 				{
 					bestCounter = 1;
 					bestScore = newScore;
-					bestChromo = p.getChromosome(i);
+					if (i != 100){
+						bestChromo = p.getChromosome(i);
+					}
+					
 				}
 			}
 		}
