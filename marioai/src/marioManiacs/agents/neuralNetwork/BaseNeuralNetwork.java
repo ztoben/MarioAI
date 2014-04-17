@@ -64,7 +64,7 @@ public class BaseNeuralNetwork implements NeuralNetwork
 		for (int i=0; i < inputLayer.length; i++)
 		{
 			inputLayer[i].setValue(gridValues[i]);
-			inputLayer[i].run();
+			//inputLayer[i].run();  inputLayer no longer needs to run, always firing
 		}
 		
 		for (int i=0; i < hiddenLayer.length; i++) 
@@ -89,11 +89,19 @@ public class BaseNeuralNetwork implements NeuralNetwork
 	}
 
 	
-	public void setWeights(int[] weights) 
+	public void setWeights(float[] weights) 
 	{
-		int[] inputWeights = Arrays.copyOfRange(weights, 0, inputLayer.length);
-		int[] hiddenWeights = Arrays.copyOfRange(weights, inputLayer.length, inputLayer.length + hiddenLayer.length);
-		int[] outputWeights = Arrays.copyOfRange(weights, inputLayer.length + hiddenLayer.length, weights.length);
+		// hidden thresholds (length of hidden Layer)
+		
+		// output thresholds (length of output layer)
+		
+		// for each hidden node
+			// hiddenWeights (length of input layer) * hiddenNodes
+		
+		
+		float[] inputWeights = Arrays.copyOfRange(weights, 0, inputLayer.length);
+		float[] hiddenWeights = Arrays.copyOfRange(weights, inputLayer.length, inputLayer.length + hiddenLayer.length);
+		float[] outputWeights = Arrays.copyOfRange(weights, inputLayer.length + hiddenLayer.length, weights.length);
 		
 		setInputLayerWeights(inputWeights);
 		setHiddenLayerWeights(hiddenWeights);

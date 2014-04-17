@@ -7,17 +7,21 @@ package marioManiacs.agents.neuralNetwork;
 
 public class InputNode implements NeuralNode
 {
-	boolean bFire;
+	boolean bFire = true;
 	int value;
-	int internalWeight;
+	float internalWeight;
 	HiddenNode[] hiddenNodes;
 	
-	public int getWeight() 
+	
+	public float getWeight() 
 	{
 		return internalWeight;
 	}
 
-	
+	public int getValue()
+	{
+		return value;
+	}
 	
 	public boolean isFiring() 
 	{
@@ -41,7 +45,7 @@ public class InputNode implements NeuralNode
 
 
 	@Override
-	public void setWeight(int weight) //NOT BEING USED
+	public void setWeight(float weight)
 	{
 		internalWeight = weight;
 	}

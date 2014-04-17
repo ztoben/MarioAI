@@ -8,14 +8,14 @@ package marioManiacs.agents.neuralNetwork;
 public class OutputNode implements NeuralNode
 {
 	boolean bFire;
-	int internalWeight;
+	float internalWeight;
 	HiddenNode[] hiddenNodes;		//hiddenNodes and values are PARALLEL ARRAYS
-	int[] values;
+	float[] values;
 	
 	
 	
 	
-	public int getWeight()
+	public float getWeight()
 	{
 		return internalWeight;
 	}
@@ -41,7 +41,7 @@ public class OutputNode implements NeuralNode
 	}
 
 
-	public void setWeight(int weight)
+	public void setWeight(float weight)
 	{
 		internalWeight = weight;
 	}
@@ -54,27 +54,16 @@ public class OutputNode implements NeuralNode
 	public void setRearConnections(NeuralNode[] connections)
 	{
 		hiddenNodes = (HiddenNode[]) connections;
-		setupValues();
-		setValues();
 	}
 
 
 	public void setInputWeights() {} // not implemented yet
-
-	private void setupValues() 
-	{
-		values = new int[hiddenNodes.length];
-	}
 	
-	public void setValues()
+	
+	public void setValues()  //WILL CHANGE THIS LATER
 	{
-		/*
-		for (int i=0; i < myValues.length; i++)
-		{
-			values[i] = myValues[i];
-		}
-		*/
-		for (int i=0; i<values.length; i++)
+		values = new float[hiddenNodes.length];
+		for (int i=0; i < hiddenNodes.length; i++)
 		{
 			values[i] = 1;
 		}
@@ -83,11 +72,14 @@ public class OutputNode implements NeuralNode
 
 	public void run() 
 	{
-		int sum = 0;
+		float sum = 0;
+		
 		for (int i=0; i < values.length; i++)
 		{
 			if (hiddenNodes[i].isFiring())
+			{
 				sum += values[i];
+			}
 		}
 		
 		if (sum > internalWeight)//to fire or not to fire

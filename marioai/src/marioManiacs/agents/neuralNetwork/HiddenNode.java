@@ -1,5 +1,4 @@
 package marioManiacs.agents.neuralNetwork;
-import java.util.*;
 
 /* Represents a node within the Hidden Layer of the Neural Network
  * This node contains a weight value, a list of the nodes it is connected to
@@ -9,14 +8,14 @@ import java.util.*;
 public class HiddenNode implements NeuralNode
 {
 	boolean bFire;
-	int internalWeight;
+	float internalWeight;
 	InputNode[] inputNodes;		//inputNodes and values are PARALLEL ARRAYS
-	int[] values;
+	float[] values;
 	OutputNode[] outputNodes;
 	
 	
 	
-	public int getWeight() 
+	public float getWeight() 
 	{
 		return internalWeight;
 	}
@@ -41,7 +40,7 @@ public class HiddenNode implements NeuralNode
 	}
 
 
-	public void setWeight(int weight) 
+	public void setWeight(float weight) 
 	{
 		internalWeight = weight;
 	}
@@ -56,29 +55,28 @@ public class HiddenNode implements NeuralNode
 	public void setRearConnections(NeuralNode[] connections) 
 	{
 		inputNodes = (InputNode[]) connections;
-		setValues();
 	}
 
 
 	public void setInputWeights() {} // not implemented yet
 
-	public void setValues()
+	
+	public void setValues(float[] generatedValues)
 	{
-		values = new int[inputNodes.length];
-		for (int i=0; i<values.length; i++)
-		{
-			values[i] = (int) (Math.random() * 5);
-		}
+		//values = new float[inputNodes.length];
+		values = generatedValues;
 	}
 
 
 	public void run() 
 	{
-		int sum = 0;
+		float sum = 0;
+		float tempValue;
+		
 		for (int i=0; i < values.length; i++)
 		{
-			if (inputNodes[i].isFiring())
-				sum += values[i];
+			tempValue = values[i] * inputNodes[i].getValue();
+			sum += tempValue;
 		}
 		
 		if (sum > internalWeight)//to fire or not to fire
@@ -94,10 +92,5 @@ public class HiddenNode implements NeuralNode
 		myNode[0] = node;
 		
 		//inputNodes = ArrayUtils.addAll(inputNodes, node);
-	}
-	
-	public void setValue(int value) 
-	{
-		; // for input nodes only
 	}
 }
