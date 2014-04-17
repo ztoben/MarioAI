@@ -80,7 +80,6 @@ public class GAModifier {
 		Random testRandom = new Random();
 		int originalSize = newPop.getSize();
 		newPop.addToPopulation(bestChromo);
-		int chromosomeSize = bestChromo.chromosome.length;
 		for (int randomIndex = 0; randomIndex < 30; randomIndex++){
 			newPop.addToPopulation(GAModifier.createRandomChromosome(inputLayerSize, hiddenLayerSize, outputLayerSize));
 		}

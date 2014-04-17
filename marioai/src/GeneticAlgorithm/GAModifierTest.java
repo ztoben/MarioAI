@@ -2,7 +2,6 @@ package GeneticAlgorithm;
 
 import static org.junit.Assert.*;
 
-import org.junit.Before;
 import org.junit.Test;
 
 public class GAModifierTest {
@@ -37,12 +36,10 @@ public class GAModifierTest {
 		GAModifier.breedPopulation(population, chromo,inputLayerSize, hiddenLayerSize, outputLayerSize);
 		assertEquals(100,population.getSize());
 	}
-	@Test //
+	@Test 
 	public void testSize2(){
 		for (int j = 0; j < 100; j++){
-			int originalSize = population.getSize();
 			GAModifier.breedPopulation(population, chromo,inputLayerSize, hiddenLayerSize,outputLayerSize);
-
 		}
 		assertEquals(100,population.getSize());
 	}
