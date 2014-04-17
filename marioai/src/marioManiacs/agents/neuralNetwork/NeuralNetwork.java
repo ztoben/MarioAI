@@ -20,13 +20,13 @@ public interface NeuralNetwork
 	public boolean[] think(int[] gridValues);
 	
 	
-	public void setInputLayerWeights(int[] weights);
+	public void setInputLayerThresholds(float[] weights);
 	
 	
-	public void setHiddenLayerWeights(int[] weights);
+	public void setHiddenLayerThresholds(float[] weights);
 	
 	
-	public void setOutputLayerWeights(int[] weights);
+	public void setOutputLayerThresholds(float[] weights);
 	
 	
 	public void setInputLayerConnections();

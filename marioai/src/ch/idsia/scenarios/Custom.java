@@ -62,7 +62,7 @@ public class Custom
 			System.out.println("Generation "+ j + " Score - " +bestScore);
 			j++;
 			
-			for (int i = 0; i < 101; i++) 
+			for (int i = 0; i < 101; i++)
 			{
 				if (i != 100)
 				{

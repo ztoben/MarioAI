@@ -99,17 +99,17 @@ public class BaseNeuralNetwork implements NeuralNetwork
 			// hiddenWeights (length of input layer) * hiddenNodes
 		
 		
-		float[] inputWeights = Arrays.copyOfRange(weights, 0, inputLayer.length);
-		float[] hiddenWeights = Arrays.copyOfRange(weights, inputLayer.length, inputLayer.length + hiddenLayer.length);
-		float[] outputWeights = Arrays.copyOfRange(weights, inputLayer.length + hiddenLayer.length, weights.length);
-		
-		setInputLayerWeights(inputWeights);
+		float[] hiddenThresholds = Arrays.copyOfRange(weights, 0, hiddenLayer.length);
+		float[] outputThresholds = Arrays.copyOfRange(weights, hiddenLayer.length, hiddenLayer.length + outputLayer.length);
+		float[] hiddenWeights = Arrays.copyOfRange(weights, hiddenLayer.length + outputLayer.length, weights.length);
+	
+		setHiddenLayerThresholds(hiddenThresholds);
+		setOutputLayerThresholds(outputThresholds);
 		setHiddenLayerWeights(hiddenWeights);
-		setOutputLayerWeights(outputWeights);
 	}
 	
 	
-	public void setInputLayerWeights(int[] weights) 
+	public void setInputLayerThresholds(float[] weights) 
 	{
 		for (int i = 0; i < inputLayer.length; i++) 
 		{
@@ -118,7 +118,7 @@ public class BaseNeuralNetwork implements NeuralNetwork
 	}
 	
 	
-	public void setHiddenLayerWeights(int[] weights) 
+	public void setHiddenLayerThresholds(float[] weights) 
 	{
 		for (int i = 0; i < hiddenLayer.length; i++) 
 		{
@@ -127,7 +127,20 @@ public class BaseNeuralNetwork implements NeuralNetwork
 	}
 	
 	
-	public void setOutputLayerWeights(int[] weights) 
+	public void setHiddenLayerWeights(float[] weights)
+	{
+		float[] nodeWeights;
+		int i = 0;
+		while (i < hiddenLayer.length)
+		{
+			nodeWeights = Arrays.copyOfRange(weights, i * inputLayer.length, inputLayer.length * (i+1));
+			hiddenLayer[i].setValues(nodeWeights);
+			i++;
+		}
+	}
+	
+	
+	public void setOutputLayerThresholds(float[] weights) 
 	{
 		for (int i = 0; i < outputLayer.length; i++) 
 		{
