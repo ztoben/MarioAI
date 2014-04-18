@@ -18,7 +18,7 @@ public class GAModifier {
 				chromosomeToMake[i] = (float) randy.nextInt(3* inputLayerSize);
 			}
 			else if (i <= inputLayerSize + hiddenLayerSize){
-				chromosomeToMake[i] = (float) randy.nextInt(hiddenLayerSize);
+				chromosomeToMake[i] = (float) (randy.nextInt(hiddenLayerSize * 2) - 20);
 			}
 			else{
 				chromosomeToMake[i] = randy.nextFloat();						

@@ -148,11 +148,11 @@ public class ParserAgent implements Agent
 					case -20: temp = 1; 	break; // breakable brick
 					case -22: temp = 1; 	break; // unbreakable brick
 					
-					case 1: temp = 2;		break; // coin
-					case 2: temp = 2; 		break; // mushroom
-					case 9: temp = 2;		break; // green mushroom
+					case 1: temp = 3;		break; // coin
+					case 2: temp = 3; 		break; // mushroom
+					case 9: temp = 3;		break; // green mushroom
 					
-					case 0: temp = 3; 		break; // empty grid
+					case 0: temp = 2; 		break; // empty grid
 					
 					case -60: temp = 4; 	break; // non-traverable terrain
 					case -80: temp = 4; 	break; // cannon
@@ -161,7 +161,7 @@ public class ParserAgent implements Agent
 					case 49: temp = 100;	break; // princess
 					case 5: temp = 100;		break; // princess
 					
-					default: temp = 5; 			   // enemies
+					default: temp = -1; 			   // enemies
 					
 					/*
 					empty = 0
