@@ -82,15 +82,13 @@ public class Custom
 				else
 				{
 					base.setWeights(bestChromo.chromosome);
-<<<<<<< Upstream, based on origin/NeuralNetwork
 					marioAIOptions.setVisualization(true);
 					marioAIOptions.setFPS(100);
-=======
 					if (j %10 == 0 && j != 0){
 						marioAIOptions.setVisualization(true);
 					}
 					marioAIOptions.setFPS(90);
->>>>>>> 80e351b Fixing GA bug
+
 				}
 				
 				agent.setNeuralNetwork(base);

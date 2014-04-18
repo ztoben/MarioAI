@@ -90,7 +90,7 @@ public class BaseNeuralNetwork implements NeuralNetwork
 		if (tick == 75)
 		{
 			tick=0;
-			output[3] = false;
+		//	output[3] = false;
 		}
 		
 		return output;

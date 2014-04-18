@@ -14,10 +14,10 @@ public class GAModifier {
 		Random randy = new Random();
 
 		for (int i = 0; i < size; i++){
-			if (i <= hiddenLayerSize){
+			if (i < hiddenLayerSize){
 				chromosomeToMake[i] = (float) randy.nextInt(3* inputLayerSize);
 			}
-			else if (i <= outputLayerSize + hiddenLayerSize){
+			else if (i < outputLayerSize + hiddenLayerSize){
 				chromosomeToMake[i] = (float) randy.nextInt(hiddenLayerSize);
 			}
 			else{
@@ -67,10 +67,10 @@ public class GAModifier {
 
 		for (int i = 0; i < numberOfMutations; i++){
 			int indexToModify = randy.nextInt(lengthChromo);
-			if (indexToModify <= hiddenLayerSize){
+			if (indexToModify < hiddenLayerSize){
 				mutateCopy[indexToModify] = (float) randy.nextInt(3* inputLayerSize);
 			}
-			else if (indexToModify <= outputLayerSize + hiddenLayerSize){
+			else if (indexToModify < outputLayerSize + hiddenLayerSize){
 				mutateCopy[indexToModify] = (float) randy.nextInt(hiddenLayerSize);
 			}
 			else{
