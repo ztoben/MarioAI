@@ -109,14 +109,13 @@ public class BaseNeuralNetwork implements NeuralNetwork
 		
 		float[] hiddenThresholds = Arrays.copyOfRange(weights, 0, hiddenLayer.length);
 		float[] outputThresholds = Arrays.copyOfRange(weights, hiddenLayer.length, hiddenLayer.length + outputLayer.length);
-		float[] hiddenWeights = Arrays.copyOfRange(weights, hiddenLayer.length + outputLayer.length, weights.length);
+		float[] hiddenWeights = Arrays.copyOfRange(weights, hiddenLayer.length + outputLayer.length, hiddenLayer.length + outputLayer.length + (hiddenLayer.length * inputLayer.length));
+		float[] outputWeights = Arrays.copyOfRange(weights, hiddenLayer.length + outputLayer.length + (hiddenLayer.length * inputLayer.length), weights.length);
 	
 		setHiddenLayerThresholds(hiddenThresholds);
 		setOutputLayerThresholds(outputThresholds);
 		setHiddenLayerWeights(hiddenWeights);
-		
-		for (int i=0; i < outputLayer.length; i++)
-			outputLayer[i].setValues();
+		setOutputLayerWeights(outputWeights);
 	}
 	
 	
@@ -156,6 +155,19 @@ public class BaseNeuralNetwork implements NeuralNetwork
 		for (int i = 0; i < outputLayer.length; i++) 
 		{
 			outputLayer[i].setWeight(weights[i]);
+		}
+	}
+	
+	
+	public void setOutputLayerWeights(float[] weights)
+	{
+		float[] nodeWeights;
+		int i = 0;
+		while (i < outputLayer.length)
+		{
+			nodeWeights = Arrays.copyOfRange(weights, i * outputLayer.length, outputLayer.length * (i+1));
+			outputLayer[i].setValues(nodeWeights);
+			i++;
 		}
 	}
 

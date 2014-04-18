@@ -9,7 +9,7 @@ public class GAModifier {
 	public GAModifier(){}
 
 	public static Chromosome createRandomChromosome(int inputLayerSize, int hiddenLayerSize, int outputLayerSize ){
-		int size = inputLayerSize * hiddenLayerSize + hiddenLayerSize + outputLayerSize;
+		int size = inputLayerSize * hiddenLayerSize + hiddenLayerSize + outputLayerSize + outputLayerSize * hiddenLayerSize;
 		float[] chromosomeToMake = new float[size];
 		Random randy = new Random();
 

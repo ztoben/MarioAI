@@ -60,13 +60,9 @@ public class OutputNode implements NeuralNode
 	public void setInputWeights() {} // not implemented yet
 	
 	
-	public void setValues()
+	public void setValues(float[] weights)
 	{
-		values = new float[hiddenNodes.length];
-		for (int i=0; i < hiddenNodes.length; i++)
-		{
-			values[i] = 1;
-		}
+		values = weights;
 	}
 
 
