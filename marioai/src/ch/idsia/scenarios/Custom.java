@@ -52,11 +52,13 @@ public class Custom
 		int populationSize = 100;
 		Population p = GAModifier.createFirstGeneration(inputLayerSize, hiddenLayerSize, outputLayerSize, populationSize);
 		Chromosome bestChromo = p.getChromosome(0);
+		for (int y = 0; y < 100;y++){
+			System.out.println(y + " index - " + bestChromo.chromosome[y]);
+		}
 		BaseNeuralNetwork base = new FullConnectionNeuralNetwork(52,20);
 		base.createConnections();
 		while(true)
-		{ // Base this off score eventually or just certain number of generations
-
+		{			
 			if (j != 0)
 			{
 				GAModifier.breedPopulation(p, bestChromo,inputLayerSize, hiddenLayerSize, outputLayerSize);
@@ -80,8 +82,15 @@ public class Custom
 				else
 				{
 					base.setWeights(bestChromo.chromosome);
+<<<<<<< Upstream, based on origin/NeuralNetwork
 					marioAIOptions.setVisualization(true);
 					marioAIOptions.setFPS(100);
+=======
+					if (j %10 == 0 && j != 0){
+						marioAIOptions.setVisualization(true);
+					}
+					marioAIOptions.setFPS(90);
+>>>>>>> 80e351b Fixing GA bug
 				}
 				
 				agent.setNeuralNetwork(base);

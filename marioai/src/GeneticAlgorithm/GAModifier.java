@@ -17,11 +17,16 @@ public class GAModifier {
 			if (i <= hiddenLayerSize){
 				chromosomeToMake[i] = (float) randy.nextInt(3* inputLayerSize);
 			}
-			else if (i <= inputLayerSize + hiddenLayerSize){
+			else if (i <= outputLayerSize + hiddenLayerSize){
 				chromosomeToMake[i] = (float) randy.nextInt(hiddenLayerSize);
 			}
 			else{
-				chromosomeToMake[i] = randy.nextFloat();						
+				if (randy.nextBoolean()){
+					chromosomeToMake[i] = randy.nextFloat();		
+				}
+				else {
+					chromosomeToMake[i] = (-1) * randy.nextFloat();
+				}
 			}
 		}
 		return new Chromosome(chromosomeToMake);
@@ -65,11 +70,16 @@ public class GAModifier {
 			if (indexToModify <= hiddenLayerSize){
 				mutateCopy[indexToModify] = (float) randy.nextInt(3* inputLayerSize);
 			}
-			else if (indexToModify <= inputLayerSize + hiddenLayerSize){
+			else if (indexToModify <= outputLayerSize + hiddenLayerSize){
 				mutateCopy[indexToModify] = (float) randy.nextInt(hiddenLayerSize);
 			}
 			else{
-				mutateCopy[indexToModify] = randy.nextFloat();						
+				if (randy.nextBoolean()){
+					mutateCopy[indexToModify] = randy.nextFloat();		
+				}
+				else {
+					mutateCopy[indexToModify] = (-1) * randy.nextFloat();
+				}					
 			}
 		}
 		return new Chromosome(mutateCopy);
