@@ -44,7 +44,7 @@ public class GAModifier {
 
 	public static Chromosome breedChromosome(Chromosome first, Chromosome second,int inputLayerSize, int hiddenLayerSize, int outputLayerSize){
 		Random newRandom = new Random();
-		int size = inputLayerSize * hiddenLayerSize + hiddenLayerSize + outputLayerSize;
+		int size = inputLayerSize * hiddenLayerSize + hiddenLayerSize + outputLayerSize+ hiddenLayerSize * outputLayerSize;
 		float[] breeder =  new float[size];
 		for (int i = 0; i < first.chromosome.length;i++){
 			boolean testBool = newRandom.nextBoolean();
