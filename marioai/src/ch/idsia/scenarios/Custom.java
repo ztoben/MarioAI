@@ -43,7 +43,7 @@ public class Custom
 		int j = 0;
 		int bestScore = 0;
 		int newScore = 0;
-		int bestCounter = 0;
+		//int bestCounter = 0;
 		int seed = 1;
 		Chromosome c;
 		int inputLayerSize = 52;
@@ -63,7 +63,11 @@ public class Custom
 			}
 			
 			System.out.println("Generation "+ j + " Score - " +bestScore);
+			bestScore = 0;
 			j++;
+			if (j%15 == 0){
+				seed++;
+			}
 			
 			for (int i = 0; i < 101; i++)
 			{
@@ -77,7 +81,7 @@ public class Custom
 				{
 					base.setWeights(bestChromo.chromosome);
 					marioAIOptions.setVisualization(true);
-					marioAIOptions.setFPS(90);
+					marioAIOptions.setFPS(100);
 				}
 				
 				agent.setNeuralNetwork(base);
@@ -85,7 +89,6 @@ public class Custom
 				final BasicTask basicTask = new BasicTask(marioAIOptions);
 				marioAIOptions.setLevelDifficulty(0);
 				marioAIOptions.setLevelRandSeed(seed);
-				//seed++;
 
 	/*			if (bestCounter == 1)
 				{
@@ -117,7 +120,7 @@ public class Custom
 
 				if (bestScore < newScore)
 				{
-					bestCounter = 1;
+					//bestCounter = 1;
 					bestScore = newScore;
 					if (i != 100){
 						bestChromo = p.getChromosome(i);
