@@ -40,6 +40,7 @@ public class Custom
 	{
 		final MarioAIOptions marioAIOptions = new MarioAIOptions(args);
 		final ParserAgent agent = new ParserAgent("bob");
+		MarioManiacsFitnessFunction fitnessFunction = new MarioManiacsFitnessFunction();
 		int j = 0;
 		int bestScore = 0;
 		int newScore = 0;
@@ -52,10 +53,8 @@ public class Custom
 		int populationSize = 100;
 		Population p = GAModifier.createFirstGeneration(inputLayerSize, hiddenLayerSize, outputLayerSize, populationSize);
 		Chromosome bestChromo = p.getChromosome(0);
-		for (int y = 0; y < 100;y++){
-			System.out.println(y + " index - " + bestChromo.chromosome[y]);
-		}
-		BaseNeuralNetwork base = new FullConnectionNeuralNetwork(52,20);
+
+		BaseNeuralNetwork base = new FullConnectionNeuralNetwork(28,20);
 		base.createConnections();
 		while(true)
 		{			
@@ -67,10 +66,11 @@ public class Custom
 			System.out.println("Generation "+ j + " Score - " +bestScore);
 			bestScore = 0;
 			j++;
+			/*
 			if (j%15 == 0){
 				seed++;
 			}
-			
+			*/
 			for (int i = 0; i < 101; i++)
 			{
 				if (i != 100)
@@ -83,18 +83,18 @@ public class Custom
 				{
 					base.setWeights(bestChromo.chromosome);
 					marioAIOptions.setVisualization(true);
-					marioAIOptions.setFPS(100);
-					if (j %10 == 0 && j != 0){
+					if (j %10 == 0 && j != 0)
+					{
 						marioAIOptions.setVisualization(true);
 					}
-					marioAIOptions.setFPS(90);
+					marioAIOptions.setFPS(99);
 
 				}
 				
 				agent.setNeuralNetwork(base);
 
 				final BasicTask basicTask = new BasicTask(marioAIOptions);
-				marioAIOptions.setLevelDifficulty(0);
+				marioAIOptions.setLevelDifficulty(1);
 				marioAIOptions.setLevelRandSeed(seed);
 
 	/*			if (bestCounter == 1)
@@ -113,12 +113,12 @@ public class Custom
 				}
 				*/
 				marioAIOptions.setAgent(agent);
-				basicTask.setOptionsAndReset(marioAIOptions);
+				//basicTask.setOptionsAndReset(marioAIOptions);
 				basicTask.runSingleEpisode(1);
 
 				try
 				{
-					newScore = basicTask.getEvaluationInfo().computeBasicFitness();
+					newScore = fitnessFunction.computeScore(basicTask.getEvaluationInfo());
 				} 
 				catch (NullPointerException e)
 				{
@@ -129,7 +129,8 @@ public class Custom
 				{
 					//bestCounter = 1;
 					bestScore = newScore;
-					if (i != 100){
+					if (i != 100)
+					{
 						bestChromo = p.getChromosome(i);
 					}
 					

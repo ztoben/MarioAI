@@ -22,7 +22,7 @@ public class ParserAgent implements Agent
     protected byte[][] mainGrid;
     protected byte[][] worldState;
     protected int[] marioPosition = new int[2];
-    protected int nodesToSearch = 7;//this represents x AND y dimensions, they should be the same and ODD
+    protected int nodesToSearch = 5;//this represents x AND y dimensions, they should be the same and ODD
     
     protected int marioState; // 2 = fire; 1 = large; 0 = small
     protected boolean bMarioCanJump;
