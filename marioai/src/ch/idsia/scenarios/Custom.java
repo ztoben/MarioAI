@@ -49,7 +49,7 @@ public class Custom
 		int inputLayerSize = 52;
 		int hiddenLayerSize = 20;
 		int outputLayerSize = 6;
-		int populationSize = 100;
+		int populationSize = 150;
 		Population p = GAModifier.createFirstGeneration(inputLayerSize, hiddenLayerSize, outputLayerSize, populationSize);
 		Chromosome bestChromo = p.getChromosome(0);
 		BaseNeuralNetwork base = new FullConnectionNeuralNetwork(52,20);
@@ -61,13 +61,13 @@ public class Custom
 			{
 				GAModifier.breedPopulation(p, bestChromo,inputLayerSize, hiddenLayerSize, outputLayerSize);
 			}
-			
+
 			System.out.println("Generation "+ j + " Score - " +bestScore);
 			j++;
-			
-			for (int i = 0; i < 101; i++)
+
+			for (int i = 0; i < 151; i++)
 			{
-				if (i != 100)
+				if (i != 150)
 				{
 					marioAIOptions.setVisualization(false);
 					c = p.getChromosome(i);
@@ -76,18 +76,23 @@ public class Custom
 				else
 				{
 					base.setWeights(bestChromo.chromosome);
-					marioAIOptions.setVisualization(true);
+					if (j %10 ==0 && j != 0){
+						marioAIOptions.setVisualization(true);
+					}
+					else {
+						marioAIOptions.setVisualization(false);
+					}
 					marioAIOptions.setFPS(90);
 				}
-				
+
 				agent.setNeuralNetwork(base);
 
 				final BasicTask basicTask = new BasicTask(marioAIOptions);
-				marioAIOptions.setLevelDifficulty(0);
+				marioAIOptions.setLevelDifficulty(1);
 				marioAIOptions.setLevelRandSeed(seed);
 				//seed++;
 
-	/*			if (bestCounter == 1)
+				/*			if (bestCounter == 1)
 				{
 					//marioAIOptions.setVisualization(true);
 					base.setWeights(bestChromo.chromosome);
@@ -101,7 +106,7 @@ public class Custom
 					marioAIOptions.setVisualization(false);
 					marioAIOptions.setFPS(1000);
 				}
-				*/
+				 */
 				marioAIOptions.setAgent(agent);
 				basicTask.setOptionsAndReset(marioAIOptions);
 				basicTask.runSingleEpisode(1);
@@ -119,10 +124,10 @@ public class Custom
 				{
 					bestCounter = 1;
 					bestScore = newScore;
-					if (i != 100){
+					if (i != 150){
 						bestChromo = p.getChromosome(i);
 					}
-					
+
 				}
 			}
 		}

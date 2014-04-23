@@ -111,7 +111,7 @@ public class GAModifier {
 		}
 		Set<Chromosome> set = new HashSet<Chromosome>(newPop.population);
 		newPop.population = new ArrayList<Chromosome>(set);
-		while (newPop.getSize() < 100){
+		while (newPop.getSize() < 150){
 			newPop.addToPopulation(GAModifier.createRandomChromosome(inputLayerSize, hiddenLayerSize, outputLayerSize));
 		}
 		return newPop;
