@@ -35,10 +35,8 @@ public class BaseNeuralNetwork implements NeuralNetwork
 		{
 			outputLayer[i] = new OutputNode();
 		}
-		
 	}
-	
-	
+
 	
 	public NeuralNode[] getInputLayer() 
 	{
@@ -84,8 +82,8 @@ public class BaseNeuralNetwork implements NeuralNetwork
 				output[i] = false;
 		}
 		
-		if (output[1] == true)
-			output[0] = false; // set left false if pushing right
+		//if (output[1] == true)
+		//	output[0] = false; // set left false if pushing right
 		
 		if (isJumping  && gridValues[1] == 1) {
 			output[3] = false;
@@ -124,7 +122,7 @@ public class BaseNeuralNetwork implements NeuralNetwork
 	{
 		for (int i = 0; i < inputLayer.length; i++) 
 		{
-			this.inputLayer[i].setWeight(weights[i]);
+			inputLayer[i].setWeight(weights[i]);
 		}
 	}
 	

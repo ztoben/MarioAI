@@ -42,100 +42,77 @@ public class Custom
 		final ParserAgent agent = new ParserAgent("bob");
 		MarioManiacsFitnessFunction fitnessFunction = new MarioManiacsFitnessFunction();
 		int j = 0;
+		
+		int bestScoreIndex = 0;
 		int bestScore = 0;
 		int newScore = 0;
-		//int bestCounter = 0;
+		int[] scores;
+		
 		int seed = 1;
-		Chromosome c;
+		
 		int inputLayerSize = 52;
 		int hiddenLayerSize = 20;
 		int outputLayerSize = 6;
 		int populationSize = 100;
-		Population p = GAModifier.createFirstGeneration(inputLayerSize, hiddenLayerSize, outputLayerSize, populationSize);
-		Chromosome bestChromo = p.getChromosome(0);
-
-		BaseNeuralNetwork base = new FullConnectionNeuralNetwork(28,20);
+		
+		GAthree geneticAlgorithm = new GAthree(populationSize, inputLayerSize, hiddenLayerSize, outputLayerSize);
+		float[][] generation = geneticAlgorithm.generateFreshBatch();
+		float[] bestChromo = generation[0];
+		
+		BaseNeuralNetwork base = new FullConnectionNeuralNetwork(inputLayerSize,hiddenLayerSize);
 		base.createConnections();
+		agent.setNeuralNetwork(base);
+		
+		final BasicTask basicTask = new BasicTask(marioAIOptions);
+		marioAIOptions.setLevelDifficulty(0);
+		marioAIOptions.setLevelRandSeed(seed);
+		marioAIOptions.setAgent(agent);
+		
 		while(true)
 		{			
-			if (j != 0)
+			System.out.println("Generation "+ j + " Score - " +bestScore);
+			scores = new int[populationSize];
+			j++;
+			bestScore = 0;
+			
+			for (int i=0; i < populationSize + 1; i++)
 			{
-				GAModifier.breedPopulation(p, bestChromo,inputLayerSize, hiddenLayerSize, outputLayerSize);
+				if (i == populationSize) // show the best agent
+				{	
+					marioAIOptions.setVisualization(true);
+					marioAIOptions.setFPS(99);
+					base.setWeights(bestChromo);
+					basicTask.runSingleEpisode(1);
+				}
+				else // we are running through the generation
+				{
+					marioAIOptions.setVisualization(false);
+					base.setWeights(generation[i]);
+					
+					basicTask.runSingleEpisode(1);
+					
+					newScore = fitnessFunction.computeScore(basicTask.getEvaluationInfo());
+					
+					if (newScore > 10000) // something went wrong through this score out
+						scores[i] = 0;
+					else
+						scores[i] = newScore;
+					
+					if (newScore > bestScore)
+					{
+						bestScore = newScore;
+						bestScoreIndex = i;
+						
+						if (i == populationSize - 1) // last trial, now we know which agent did the best
+						{
+							bestChromo = generation[bestScoreIndex];
+						}
+					}
+				}
 			}
 			
-			System.out.println("Generation "+ j + " Score - " +bestScore);
-			bestScore = 0;
-			j++;
-			/*
-			if (j%15 == 0){
-				seed++;
-			}
-			*/
-			for (int i = 0; i < 101; i++)
-			{
-				if (i != 100)
-				{
-					marioAIOptions.setVisualization(false);
-					c = p.getChromosome(i);
-					base.setWeights(c.chromosome);
-				}
-				else
-				{
-					base.setWeights(bestChromo.chromosome);
-					marioAIOptions.setVisualization(true);
-					if (j %10 == 0 && j != 0)
-					{
-						marioAIOptions.setVisualization(true);
-					}
-					marioAIOptions.setFPS(99);
-
-				}
-				
-				agent.setNeuralNetwork(base);
-
-				final BasicTask basicTask = new BasicTask(marioAIOptions);
-				marioAIOptions.setLevelDifficulty(1);
-				marioAIOptions.setLevelRandSeed(seed);
-
-	/*			if (bestCounter == 1)
-				{
-					//marioAIOptions.setVisualization(true);
-					base.setWeights(bestChromo.chromosome);
-					bestCounter = 0;
-					marioAIOptions.setFPS(70);
-					bestChromo.chromosomeToString();
-					System.out.println();
-				}
-				else
-				{
-					marioAIOptions.setVisualization(false);
-					marioAIOptions.setFPS(1000);
-				}
-				*/
-				marioAIOptions.setAgent(agent);
-				//basicTask.setOptionsAndReset(marioAIOptions);
-				basicTask.runSingleEpisode(1);
-
-				try
-				{
-					newScore = fitnessFunction.computeScore(basicTask.getEvaluationInfo());
-				} 
-				catch (NullPointerException e)
-				{
-					newScore = 0;
-				}
-
-				if (bestScore < newScore)
-				{
-					//bestCounter = 1;
-					bestScore = newScore;
-					if (i != 100)
-					{
-						bestChromo = p.getChromosome(i);
-					}
-					
-				}
-			}
+			generation = geneticAlgorithm.createNewGeneration(generation, scores);
 		}
+		
 	}
 }

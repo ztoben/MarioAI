@@ -21,6 +21,12 @@ public class HiddenNode implements NeuralNode
 	}
 	
 	
+	public float[] getValues()
+	{
+		return values;
+	}
+	
+	
 	public boolean isFiring() 
 	{
 		return bFire;
