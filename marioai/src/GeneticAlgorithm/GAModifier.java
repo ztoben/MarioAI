@@ -1,6 +1,7 @@
 package GeneticAlgorithm;
-import java.util.ArrayList;
-import java.util.Random;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 
 
@@ -125,5 +126,27 @@ public class GAModifier {
 			newPop.addToPopulation(GAModifier.createRandomChromosome(inputLayerSize, hiddenLayerSize, outputLayerSize));
 		}
 		return newPop;
+	}
+	
+	
+
+	public static Chromosome getChromoFromCSV(String path) throws IOException{
+		BufferedReader br = new BufferedReader(new FileReader(path));
+		String line = "";
+		ArrayList<String> country = new ArrayList<String>();
+		while((line = br.readLine()) != null){
+			String[] floats = line.split(","); 
+			for (int r = 0; r < floats.length; r++){
+				country.add(floats[r]);
+			}
+		}
+		float[] bomb = new float[country.size()];
+		for (int j = 0; j < country.size(); j++){
+			bomb[j] = Float.parseFloat(country.get(j));
+		}
+
+		int i = 0;
+		Chromosome c = new Chromosome(bomb);
+		return c;
 	}
 }
