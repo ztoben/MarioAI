@@ -27,6 +27,8 @@
 
 package ch.idsia.scenarios;
 
+import java.io.IOException;
+
 import ch.idsia.benchmark.tasks.BasicTask;
 import ch.idsia.tools.MarioAIOptions;
 import marioManiacs.agents.*;
@@ -36,7 +38,7 @@ import GeneticAlgorithm.*;
 
 public class Custom
 {
-	public static void main(String[] args)
+	public static void main(String[] args) throws IOException
 	{
 		final MarioAIOptions marioAIOptions = new MarioAIOptions(args);
 		final ParserAgent agent = new ParserAgent("bob");
@@ -98,6 +100,7 @@ public class Custom
 					{
 						bestScore = newScore;
 						bestChromo = generation[i];
+						new Chromosome(bestChromo).chromosomeToFile();
 					}
 				}
 			}
