@@ -145,23 +145,23 @@ public class ParserAgent implements Agent
         		
         		switch (temp)
 				{
-					case -20: temp = 1; 	break; // breakable brick
-					case -22: temp = 1; 	break; // unbreakable brick
+					case -20: temp = 3; 	break; // breakable brick
+					case -22: temp = 3; 	break; // unbreakable brick
 					
-					case 1: temp = 3;		break; // coin
-					case 2: temp = 3; 		break; // mushroom
-					case 9: temp = 3;		break; // green mushroom
+					case 1: temp = 5;		break; // coin
+					case 2: temp = 5; 		break; // mushroom
+					case 9: temp = 5;		break; // green mushroom
 					
-					case 0: temp = 2; 		break; // empty grid
+					case 0: temp = 0; 		break; // empty grid
 					
-					case -60: temp = 4; 	break; // non-traverable terrain
-					case -80: temp = 4; 	break; // cannon
-					case -90: temp = 4; 	break; // flowerpot
+					case -60: temp = 1; 	break; // non-traverable terrain
+					case -80: temp = 1; 	break; // cannon
+					case -90: temp = 1; 	break; // flowerpot
 					
 					case 49: temp = 100;	break; // princess
 					case 5: temp = 100;		break; // princess
 					
-					default: temp = -1; 			   // enemies
+					default: temp = -5; 			   // enemies
 					
 					/*
 					empty = 0

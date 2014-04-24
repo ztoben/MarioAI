@@ -108,19 +108,19 @@ public int computeBasicFitness()
 public int computeWeightedFitness(SystemOfValues sov)
 {
     return
-            distancePassedPhys * sov.distance +
-                    flowersDevoured * sov.flowerFire +
-                    marioStatus * sov.win +
-                    marioMode * sov.mode +
-                    mushroomsDevoured * sov.mushroom +
-                    greenMushroomsDevoured * sov.greenMushroom +
-                    coinsGained * sov.coins +
-                    hiddenBlocksFound * sov.hiddenBlock +
-                    killsTotal * sov.kills +
-                    killsByStomp * sov.killedByStomp +
-                    killsByFire * sov.killedByFire +
-                    killsByShell * sov.killedByShell +
-                    timeLeft * sov.timeLeft;
+    		distancePassedPhys * 1 +
+            flowersDevoured * 1000 +
+            marioStatus * 1 +
+            marioMode * 1 +
+            mushroomsDevoured * 1000 +
+            greenMushroomsDevoured * 5000 +
+            coinsGained * 500 +
+            hiddenBlocksFound * 10000 +
+            killsTotal * 500 +
+            killsByStomp * 1000 +
+            killsByFire * 500 +
+            killsByShell * 2000 +
+            timeLeft * 1;
 }
 
 public int computeWeightedFitness()

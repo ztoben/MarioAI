@@ -9,7 +9,7 @@ public class GAModifier {
 	public GAModifier(){}
 
 	public static Chromosome createRandomChromosome(int inputLayerSize, int hiddenLayerSize, int outputLayerSize ){
-		int size = inputLayerSize * hiddenLayerSize + hiddenLayerSize + outputLayerSize;
+		int size = inputLayerSize * 2 * hiddenLayerSize + hiddenLayerSize + outputLayerSize;
 		float[] chromosomeToMake = new float[size];
 		Random randy = new Random();
 
@@ -17,10 +17,19 @@ public class GAModifier {
 			if (i <= hiddenLayerSize){
 				chromosomeToMake[i] = (float) randy.nextInt(3* inputLayerSize);
 			}
-			else if (i <= inputLayerSize + hiddenLayerSize){
+			else if (i <= hiddenLayerSize + outputLayerSize){
 				chromosomeToMake[i] = (float) (randy.nextInt(hiddenLayerSize * 2) - 20);
+			} 
+			else if (i <= inputLayerSize + hiddenLayerSize + outputLayerSize)
+			{
+				chromosomeToMake[i] = (float) (randy.nextInt(50) - 25);
+			} 
+			else if (i <= inputLayerSize * 2 + hiddenLayerSize + outputLayerSize) 
+			{
+				chromosomeToMake[i] = randy.nextFloat() * 50 - 25;
 			}
-			else{
+			else
+			{
 				chromosomeToMake[i] = randy.nextFloat();						
 			}
 		}
@@ -39,7 +48,7 @@ public class GAModifier {
 
 	public static Chromosome breedChromosome(Chromosome first, Chromosome second,int inputLayerSize, int hiddenLayerSize, int outputLayerSize){
 		Random newRandom = new Random();
-		int size = inputLayerSize * hiddenLayerSize + hiddenLayerSize + outputLayerSize;
+		int size = inputLayerSize * 2 * hiddenLayerSize + hiddenLayerSize + outputLayerSize;
 		float[] breeder =  new float[size];
 		for (int i = 0; i < first.chromosome.length;i++){
 			boolean testBool = newRandom.nextBoolean();

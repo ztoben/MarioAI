@@ -10,6 +10,7 @@ public class InputNode implements NeuralNode
 	boolean bFire = true;
 	int value;
 	float internalWeight;
+	float threshold;
 	HiddenNode[] hiddenNodes;
 	
 	
@@ -70,25 +71,22 @@ public class InputNode implements NeuralNode
 
 	public void setValue(int inputData)
 	{
-		value = inputData;
+		
+		value = (int) (inputData * internalWeight);
 	}
 
 
 	
 	public void run() 
 	{
-		if (value > internalWeight)
+		if (value > threshold)
 			bFire = true;
 		else
 			bFire = false;
 	}
-	
-	
-	
-	
 
-	public void setValues()
+	public void setThreshold(float t)
 	{
-		;// hidden and output nodes only
+		threshold = t;
 	}
 }

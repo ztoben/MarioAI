@@ -113,7 +113,7 @@ public class Custom
 
 				try
 				{
-					newScore = basicTask.getEvaluationInfo().computeBasicFitness();
+					newScore = basicTask.getEvaluationInfo().computeWeightedFitness();
 				} 
 				catch (NullPointerException e)
 				{
