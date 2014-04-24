@@ -147,7 +147,7 @@ public static Level createLevel(MarioAIOptions args)
     odds[ODDS_STRAIGHT] = 20;
     odds[ODDS_HILL_STRAIGHT] = 1;
     odds[ODDS_TUBES] = 2 + 1 * levelDifficulty;
-    odds[ODDS_GAPS] = 3 * levelDifficulty;
+    odds[ODDS_GAPS] = 3 * 0;
     odds[ODDS_CANNONS] = -10 + 5 * levelDifficulty;
     odds[ODDS_DEAD_ENDS] = 2 + 2 * levelDifficulty;
 

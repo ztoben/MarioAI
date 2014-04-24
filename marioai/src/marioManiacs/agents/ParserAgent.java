@@ -22,7 +22,7 @@ public class ParserAgent implements Agent
     protected byte[][] mainGrid;
     protected byte[][] worldState;
     protected int[] marioPosition = new int[2];
-    protected int nodesToSearch = 7;//this represents x AND y dimensions, they should be the same and ODD
+    protected int nodesToSearch = 3;//this represents x AND y dimensions, they should be the same and ODD
     
     protected int marioState; // 2 = fire; 1 = large; 0 = small
     protected boolean bMarioCanJump;
@@ -145,23 +145,23 @@ public class ParserAgent implements Agent
         		
         		switch (temp)
 				{
-					case -20: temp = 10; 	break; // breakable brick
-					case -22: temp = 10; 	break; // unbreakable brick
+					case -20: temp = 1; 	break; // breakable brick
+					case -22: temp = 1; 	break; // unbreakable brick
 					
-					case 1: temp = 20;		break; // coin
-					case 2: temp = 20; 		break; // mushroom
-					case 9: temp = 20;		break; // green mushroom
+					case 1: temp = 3;		break; // coin
+					case 2: temp = 3; 		break; // mushroom
+					case 9: temp = 3;		break; // green mushroom
 					
-					case 0: temp = 30; 		break; // empty grid
+					case 0: temp = 2; 		break; // empty grid
 					
-					case -60: temp = 40; 	break; // non-traverable terrain
-					case -80: temp = 40; 	break; // cannon
-					case -90: temp = 40; 	break; // flowerpot
+					case -60: temp = 1; 	break; // non-traverable terrain
+					case -80: temp = 1; 	break; // cannon
+					case -90: temp = 1; 	break; // flowerpot
 					
 					case 49: temp = 100;	break; // princess
 					case 5: temp = 100;		break; // princess
 					
-					default: temp = 50; 			   // enemies
+					default: temp = -3; 			   // enemies
 					
 					/*
 					empty = 0

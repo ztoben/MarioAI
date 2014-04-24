@@ -43,33 +43,33 @@ public class Custom
 		MarioManiacsFitnessFunction fitnessFunction = new MarioManiacsFitnessFunction();
 		int j = 0;
 		
-		int bestScoreIndex = 0;
+		float[] bestChromo;
 		int bestScore = 0;
 		int newScore = 0;
 		int[] scores;
 		
-		int seed = 1;
+		int seed = 5;
 		
-		int inputLayerSize = 52;
-		int hiddenLayerSize = 20;
+		int inputLayerSize = 12;
+		int hiddenLayerSize = 30;
 		int outputLayerSize = 6;
-		int populationSize = 100;
+		int populationSize = 200;
 		
 		GAthree geneticAlgorithm = new GAthree(populationSize, inputLayerSize, hiddenLayerSize, outputLayerSize);
 		float[][] generation = geneticAlgorithm.generateFreshBatch();
-		float[] bestChromo = generation[0];
+		bestChromo = generation[0];
 		
 		BaseNeuralNetwork base = new FullConnectionNeuralNetwork(inputLayerSize,hiddenLayerSize);
 		base.createConnections();
 		agent.setNeuralNetwork(base);
 		
 		final BasicTask basicTask = new BasicTask(marioAIOptions);
-		marioAIOptions.setLevelDifficulty(0);
+		marioAIOptions.setLevelDifficulty(1);
 		marioAIOptions.setLevelRandSeed(seed);
 		marioAIOptions.setAgent(agent);
 		
 		while(true)
-		{			
+		{
 			System.out.println("Generation "+ j + " Score - " +bestScore);
 			scores = new int[populationSize];
 			j++;
@@ -92,26 +92,17 @@ public class Custom
 					basicTask.runSingleEpisode(1);
 					
 					newScore = fitnessFunction.computeScore(basicTask.getEvaluationInfo());
-					
-					if (newScore > 10000) // something went wrong through this score out
-						scores[i] = 0;
-					else
-						scores[i] = newScore;
+					scores[i] = newScore;
 					
 					if (newScore > bestScore)
 					{
 						bestScore = newScore;
-						bestScoreIndex = i;
-						
-						if (i == populationSize - 1) // last trial, now we know which agent did the best
-						{
-							bestChromo = generation[bestScoreIndex];
-						}
+						bestChromo = generation[i];
 					}
 				}
 			}
 			
-			generation = geneticAlgorithm.createNewGeneration(generation, scores);
+			generation = geneticAlgorithm.createNewGenerationV2(generation, scores);
 		}
 		
 	}

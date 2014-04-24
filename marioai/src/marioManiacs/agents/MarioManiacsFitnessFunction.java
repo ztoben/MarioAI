@@ -4,13 +4,13 @@ import ch.idsia.tools.EvaluationInfo;
 
 public class MarioManiacsFitnessFunction 
 {
-	final public int distance = 1;
+	final public int distance = 2;
 	final public int win = 1024;
 	final public int mode = 32;
-	final public int coins = 1000;
+	final public int coins = 50;
 	final public int hiddenItems = 24;
 	final public int flowerFire = 64;  // not used for now
-	final public int kills = 20;
+	final public int kills = 500;
 	final public int killedByFire = 5;
 	final public int killedByShell = 5;
 	final public int killedByStomp = 5;
