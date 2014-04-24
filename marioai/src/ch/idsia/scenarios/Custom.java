@@ -50,7 +50,7 @@ public class Custom
 		int inputLayerSize = 52;
 		int hiddenLayerSize = 20;
 		int outputLayerSize = 6;
-		int populationSize = 100;
+		int populationSize = 150;
 		Population p = GAModifier.createFirstGeneration(inputLayerSize, hiddenLayerSize, outputLayerSize, populationSize);
 		Chromosome bestChromo = p.getChromosome(0);
 
@@ -71,9 +71,9 @@ public class Custom
 				seed++;
 			}
 			*/
-			for (int i = 0; i < 101; i++)
+			for (int i = 0; i < 151; i++)
 			{
-				if (i != 100)
+				if (i != 150)
 				{
 					marioAIOptions.setVisualization(false);
 					c = p.getChromosome(i);
@@ -128,12 +128,7 @@ public class Custom
 				if (bestScore < newScore)
 				{
 					//bestCounter = 1;
-					bestScore = newScore;
-					if (i != 100)
-					{
-						bestChromo = p.getChromosome(i);
-					}
-					
+					bestScore = newScore;					
 				}
 			}
 		}

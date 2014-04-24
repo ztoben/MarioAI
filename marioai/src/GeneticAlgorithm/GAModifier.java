@@ -106,13 +106,13 @@ public class GAModifier {
 			Chromosome child = GAModifier.breedChromosome(first,second, inputLayerSize, hiddenLayerSize, outputLayerSize);
 			newPop.addToPopulation(child);
 		}	
-		for (int l = 0; l < 10;l++){
+		for (int l = 0; l < 15;l++){
 			int firstInt = testRandom.nextInt(newPop.getSize());
 			Chromosome first = newPop.getChromosome(firstInt);
 			Chromosome child = GAModifier.breedChromosome(first,bestChromo, inputLayerSize, hiddenLayerSize, outputLayerSize);
 			newPop.addToPopulation(child);
 		}
-		for (int r = 0; r < 10; r++){
+		for (int r = 0; r < 15; r++){
 			Chromosome modified = GAModifier.randomMutation(bestChromo, inputLayerSize, hiddenLayerSize, outputLayerSize);
 			newPop.addToPopulation(modified);		
 		}
@@ -121,7 +121,7 @@ public class GAModifier {
 		}
 		Set<Chromosome> set = new HashSet<Chromosome>(newPop.population);
 		newPop.population = new ArrayList<Chromosome>(set);
-		while (newPop.getSize() < 100){
+		while (newPop.getSize() < 150){
 			newPop.addToPopulation(GAModifier.createRandomChromosome(inputLayerSize, hiddenLayerSize, outputLayerSize));
 		}
 		return newPop;
