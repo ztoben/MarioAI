@@ -2,8 +2,6 @@ package GeneticAlgorithm;
 
 import java.util.Random;
 
-//this is a test
-
 public class GAthree 
 {
 	private int populationSize;
