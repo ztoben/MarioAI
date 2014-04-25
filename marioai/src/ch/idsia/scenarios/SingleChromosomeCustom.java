@@ -51,13 +51,13 @@ public class SingleChromosomeCustom
 	{
 		final MarioAIOptions marioAIOptions = new MarioAIOptions(args);
 		final ParserAgent agent = new ParserAgent("bob");
-		String path = System.getProperty("user.dir")+"//src//bestChromo.csv";
+		String path = System.getProperty("user.dir")+   "//src//bestChromo.csv";
 		Chromosome c = GAModifier.getChromoFromCSV(path);
-
-		BaseNeuralNetwork base = new FullConnectionNeuralNetwork(52,20);
+		
+		BaseNeuralNetwork base = new FullConnectionNeuralNetwork(12,30);
 		base.createConnections();
 		for (int j = 0; j < 10; j++){ 
-
+			System.out.println(c.size()+ "\n\n");
 			base.setWeights(c.chromosome);
 			marioAIOptions.setFPS(40);
 			agent.setNeuralNetwork(base);

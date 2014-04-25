@@ -66,7 +66,7 @@ public class Custom
 		agent.setNeuralNetwork(base);
 		
 		final BasicTask basicTask = new BasicTask(marioAIOptions);
-		marioAIOptions.setLevelDifficulty(1);
+		marioAIOptions.setLevelDifficulty(0);
 		marioAIOptions.setLevelRandSeed(seed);
 		marioAIOptions.setAgent(agent);
 		
@@ -81,7 +81,9 @@ public class Custom
 			{
 				if (i == populationSize) // show the best agent
 				{	
-					marioAIOptions.setVisualization(true);
+					if (j % 10==0){
+						marioAIOptions.setVisualization(true);
+					}
 					marioAIOptions.setFPS(99);
 					base.setWeights(bestChromo);
 					basicTask.runSingleEpisode(1);
@@ -93,14 +95,18 @@ public class Custom
 					
 					basicTask.runSingleEpisode(1);
 					
-					newScore = fitnessFunction.computeScore(basicTask.getEvaluationInfo());
+					try {
+						newScore = fitnessFunction.computeScore(basicTask.getEvaluationInfo());
+					}
+					catch (Exception IOException){}
+					
 					scores[i] = newScore;
 					
 					if (newScore > bestScore)
 					{
 						bestScore = newScore;
 						bestChromo = generation[i];
-						new Chromosome(bestChromo).chromosomeToFile();
+						new Chromosome(bestChromo).chromosomeToFile("//src//bestChromo.csv");
 					}
 				}
 			}
