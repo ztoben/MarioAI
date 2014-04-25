@@ -128,7 +128,7 @@ public class Custom
 					bestScore = newScore;
 					if (i != 150){
 						bestChromo = p.getChromosome(i);
-						bestChromo.chromosomeToFile();
+						bestChromo.chromosomeToFile("//src//bestChromo.csv");
 					}
 
 				}

@@ -16,8 +16,12 @@ public class Chromosome {
 		}
 	}
 	
-	public void chromosomeToFile() throws IOException{
-		FileWriter writer = new FileWriter(System.getProperty("user.dir") + "//src//bestChromo.csv");		
+	public int size(){
+		return chromosome.length;
+	}
+	
+	public void chromosomeToFile(String path) throws IOException{
+		FileWriter writer = new FileWriter(System.getProperty("user.dir") + path);		
 		for (int i = 0; i < chromosome.length;i++){
 			if (i==chromosome.length-1){
 				writer.append(Float.toString(chromosome[i]));
