@@ -1,3 +1,8 @@
+/*
+ * File: FullConnectionNeuralNetwork.java
+ * Author: Mat Kakavas Jesse Miller
+ * Last modified: 4/22/14
+ */
 package marioManiacs.agents.neuralNetwork;
 
 public class FullConnectionNeuralNetwork extends BaseNeuralNetwork

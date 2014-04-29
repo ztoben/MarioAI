@@ -1,3 +1,8 @@
+/*
+ * File: InputNode.java
+ * Author: Jesse Miller Mat Kakavas
+ * Last modified: 4/15/14
+ */
 package marioManiacs.agents.neuralNetwork;
 
 /* Represents an input node on the Neural Network

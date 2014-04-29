@@ -3,6 +3,11 @@
  * That way they can call and use the parseEnvironment() method and easily access the variables
  */
 
+/*
+ * File: ParserAgent.java
+ * Author: Jesse Miller, Mat Kakavas
+ * Last modified: 4/23/14
+ */
 package marioManiacs.agents;
 
 import java.util.Random;

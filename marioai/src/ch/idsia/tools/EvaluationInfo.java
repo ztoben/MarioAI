@@ -1,4 +1,9 @@
 /*
+ * File: EvaluationInfo.java
+ * Author: Sergey Karakovskiy   Mat Kakavas
+ * Last modified: 4/25/14
+ */
+/*
  * Copyright (c) 2009-2010, Sergey Karakovskiy and Julian Togelius
  * All rights reserved.
  *

@@ -25,6 +25,12 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
+
+/*
+ * File: BasicTask.java
+ * Author: Sergev Karkoviski
+ * Last modified: 2/28/14
+ */
 package ch.idsia.benchmark.tasks;
 
 import ch.idsia.agents.Agent;

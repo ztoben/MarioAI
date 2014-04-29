@@ -1,3 +1,8 @@
+/*
+ * File: ObservingAgent.java
+ * Author: Trent Morris, Zach Toben, Jesse Miller, Mat Kakavas
+ * Last modified: 4/23/14
+ */
 package marioManiacs.agents;
 import ch.idsia.agents.Agent;
 import ch.idsia.benchmark.mario.environments.Environment;

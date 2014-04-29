@@ -26,6 +26,12 @@
  */
 
 
+
+/*
+ * File: LevelGenerator.java
+ * Author: Sergev Karakovskiy
+ * Last modified: 2/28/14
+ */
 package ch.idsia.benchmark.mario.engine.level;
 
 import ch.idsia.benchmark.mario.engine.sprites.Sprite;

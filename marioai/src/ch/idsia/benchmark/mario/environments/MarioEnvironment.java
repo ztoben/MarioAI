@@ -25,6 +25,12 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
+
+/*
+ * File: MarioEnvironment.java
+ * Author: Sergev Karakovskiy
+ * Last modified: 2/28/14
+ */
 package ch.idsia.benchmark.mario.environments;
 
 import ch.idsia.agents.Agent;

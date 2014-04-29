@@ -1,6 +1,12 @@
 package GeneticAlgorithm;
 import java.io.BufferedReader;
+/*
+ * File: GAModifier.java
+ * Author: Trent Morris, Zach Toben
+ * Last modified: 4/23/14
+ */
 import java.io.FileNotFoundException;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;

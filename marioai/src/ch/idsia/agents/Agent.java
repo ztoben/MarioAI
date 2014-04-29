@@ -29,12 +29,10 @@ package ch.idsia.agents;
 
 import ch.idsia.benchmark.mario.environments.Environment;
 
-/**
- * Created by IntelliJ IDEA.
- * User: Sergey Karakovskiy
- * Date: Mar 28, 2009
- * Time: 8:46:42 PM
- * package ch.idsia.controllers.agents;
+/*
+ * File: Agent.java
+ * Author: Trent Morris, Zach Toben, Jesse Miller, Mat Kakavas
+ * Last modified: 2/23/14
  */
 public interface Agent
 {

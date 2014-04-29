@@ -1,4 +1,5 @@
 /*
+
  * Copyright (c) 2009-2010, Sergey Karakovskiy and Julian Togelius
  * All rights reserved.
  *
@@ -25,6 +26,11 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
+/*
+ * File: MarioAIOptions.java
+ * Author: Sergev Karvakowski
+ * Last modified: 2/28/14
+ */
 package ch.idsia.tools;
 
 import ch.idsia.benchmark.mario.engine.GlobalOptions;

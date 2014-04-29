@@ -1,3 +1,8 @@
+/*
+ * File: OutputNode.java
+ * Author: Jesse Miller Mat Kakavas
+ * Last modified: 4/15/14
+ */
 package marioManiacs.agents.neuralNetwork;
 
 /* Represents an output node of the Neural Network

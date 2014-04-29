@@ -25,6 +25,12 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
+
+/*
+ * File: MarioSystemOfValues.java
+ * Author: Sergev Karvokski
+ * Last modified: 2/28/14
+ */
 package ch.idsia.benchmark.tasks;
 
 /**

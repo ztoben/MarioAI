@@ -1,3 +1,8 @@
+/*
+ * File: BaseNeuralNetwork.java
+ * Author: Mat Kakavas
+ * Last modified: 4/23/14
+ */
 package marioManiacs.agents.neuralNetwork;
 
 import java.util.Arrays;

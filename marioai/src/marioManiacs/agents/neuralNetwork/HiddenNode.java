@@ -1,3 +1,8 @@
+/*
+ * File: HiddenNode.java
+ * Author: Jesse Miller Mat Kakavas
+ * Last modified: 4/15/14
+ */
 package marioManiacs.agents.neuralNetwork;
 
 /* Represents a node within the Hidden Layer of the Neural Network
