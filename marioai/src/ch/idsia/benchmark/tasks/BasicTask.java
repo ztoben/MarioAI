@@ -38,13 +38,11 @@ import ch.idsia.utils.statistics.StatisticalSummary;
 
 import java.util.Vector;
 
-/**
- * Created by IntelliJ IDEA.
- * User: Sergey Karakovskiy,
- * sergey@idsia.ch
- * Date: Mar 14, 2010 Time: 4:47:33 PM
+/*
+ * File: BasicTask.java
+ * Author: Sergev Karakovskiy
+ * Last modified: 2/28/14
  */
-
 public class BasicTask implements Task
 {
 protected final static Environment environment = MarioEnvironment.getInstance();

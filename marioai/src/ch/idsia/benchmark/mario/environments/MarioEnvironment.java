@@ -43,11 +43,10 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by IntelliJ IDEA.
- * User: Sergey Karakovskiy, sergey@idsia.ch
- * Date: Mar 3, 2010 Time: 10:08:13 PM
- * Package: ch.idsia.benchmark.mario.environments
+/*
+ * File: MarioEnvironment.java
+ * Author: Sergev Karakovskiy
+ * Last modified: 2/28/14
  */
 
 public final class MarioEnvironment implements Environment

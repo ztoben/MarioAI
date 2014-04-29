@@ -1,5 +1,9 @@
 package GeneticAlgorithm;
-
+/*
+ * File: GAModifierTest.java
+ * Author: Trent Morris Zach Toben
+ * Last modified: 4/16/14
+ */
 import static org.junit.Assert.*;
 
 import org.junit.Test;

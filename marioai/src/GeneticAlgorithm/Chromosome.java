@@ -1,5 +1,10 @@
 package GeneticAlgorithm;
 
+/*
+ * File: Chromosome.java
+ * Author: Trent Morris Zach Toben
+ * Last modified: 4/25/14
+ */
 import java.io.FileWriter;
 import java.io.IOException;
 

@@ -1,4 +1,10 @@
 package GeneticAlgorithm;
+
+/*
+ * File: GAModifier.java
+ * Author: Trent Morris Zach Toben
+ * Last modified: 4/23/14
+ */
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;

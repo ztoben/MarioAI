@@ -1,5 +1,10 @@
 package GeneticAlgorithm;
 
+/*
+ * File: Population.java
+ * Author: Trent Morris Zach Toben
+ * Last modified: 4/6/14
+ */
 import java.util.ArrayList;
 
 

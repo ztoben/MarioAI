@@ -1,5 +1,9 @@
 package GeneticAlgorithm;
-
+/*
+ * File: GAThree.java
+ * Author: Jesse Miller
+ * Last modified: 4/23/14
+ */
 import java.util.Random;
 
 public class GAthree 

@@ -4,6 +4,11 @@ package marioManiacs.agents.neuralNetwork;
  * All nodes will implement this interface
  */
 
+/*
+ * File: NeuralNode.java
+ * Author: Jesse Miller, Mat Kakavas
+ * Last modified: 4/15/14
+ */
 public interface NeuralNode 
 {
 	float getWeight(); // Returns the weight OR value contained within the current node

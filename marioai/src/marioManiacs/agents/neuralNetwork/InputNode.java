@@ -4,7 +4,11 @@ package marioManiacs.agents.neuralNetwork;
  * Contains a value that it receives from the world, 
  * and a list of nodes that it will send that value to
  */
-
+/*
+ * File: InputNode.java
+ * Author: Jesse Miller, Mat Kakavas
+ * Last modified: 4/15/14
+ */
 public class InputNode implements NeuralNode
 {
 	boolean bFire = true;

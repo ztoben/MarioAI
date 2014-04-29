@@ -3,7 +3,11 @@ package marioManiacs.agents.neuralNetwork;
 /* Represents the neural network
  * base interface class that contains methods all neural networks must implement
  */
-
+/*
+ * File: NeuralNetwork.java
+ * Author: Jesse Miller, Mat Kakavas
+ * Last modified: 4/15/14
+ */
 public interface NeuralNetwork
 {
 

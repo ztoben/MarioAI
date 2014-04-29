@@ -1,5 +1,9 @@
 package marioManiacs.agents;
-
+/*
+ * File: MarioManiacsFitnessFunction.java
+ * Author: Jesse Mat
+ * Last modified: 4/25/14
+ */
 import ch.idsia.tools.EvaluationInfo;
 
 public class MarioManiacsFitnessFunction 

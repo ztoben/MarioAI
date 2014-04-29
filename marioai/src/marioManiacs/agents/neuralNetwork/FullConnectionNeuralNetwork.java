@@ -1,5 +1,10 @@
 package marioManiacs.agents.neuralNetwork;
 
+/*
+ * File: FullConnectionNeuralNetwork.java
+ * Author: Jesse, Mat
+ * Last modified: 4/15/14
+ */
 public class FullConnectionNeuralNetwork extends BaseNeuralNetwork
 {
 	public FullConnectionNeuralNetwork(int numOfInputNodes, int numOfHiddenNodes)

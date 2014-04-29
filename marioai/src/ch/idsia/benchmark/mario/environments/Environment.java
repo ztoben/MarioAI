@@ -33,12 +33,10 @@ import ch.idsia.benchmark.mario.engine.sprites.Mario;
 import ch.idsia.tools.EvaluationInfo;
 import ch.idsia.tools.MarioAIOptions;
 
-/**
- * Created by IntelliJ IDEA.
- * User: Sergey Karakovskiy
- * Date: Mar 28, 2009
- * Time: 8:51:57 PM
- * Package: .Environments
+/*
+ * File: Environment.java
+ * Author: Sergev Karakovskiy
+ * Last modified: 2/28/14
  */
 
 public interface Environment

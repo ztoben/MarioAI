@@ -3,8 +3,13 @@
  * That way they can call and use the parseEnvironment() method and easily access the variables
  */
 
-package marioManiacs.agents;
 
+package marioManiacs.agents;
+/*
+ * File: ParserAgent.java
+ * Author: Jesse Miller
+ * Last modified: 4/23/14
+ */
 import java.util.Random;
 import ch.idsia.agents.Agent;
 import ch.idsia.benchmark.mario.environments.Environment;

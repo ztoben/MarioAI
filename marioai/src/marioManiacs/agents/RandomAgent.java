@@ -1,5 +1,9 @@
 package marioManiacs.agents;
-
+/*
+ * File: RandomAgent.java
+ * Author: Trent Morris Zach Toben Jesse Miller Mat Kakavas
+ * Last modified: 4/14/14
+ */
 import java.util.Random;
 
 import ch.idsia.agents.Agent;
