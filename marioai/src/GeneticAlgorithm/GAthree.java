@@ -165,7 +165,7 @@ public class GAthree
 			}
 			else if (i < eliteSize * 6) // self mutate
 			{
-				newGeneration[i] = nValueSelfMutate(newGeneration[eliteSize % i], 5);
+				newGeneration[i] = nValueSelfMutate(newGeneration[eliteSize % i], eliteSize);
 			}
 			else if (i < eliteSize * 10) // single point crossover
 			{
@@ -436,7 +436,7 @@ public class GAthree
 
 			for (int i=1; i < scores.length; i++)
 			{
-				if (scores[i] > scores[maxIndex])
+				if (scores[i] >= scores[maxIndex])
 					maxIndex = i;
 			}
 

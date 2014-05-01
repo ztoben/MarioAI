@@ -48,12 +48,13 @@ public class Custom
 		int newScore = 0;
 		int[] scores;
 		
-		int seed = 5;
+		int seed = 1;
+		int levelDifficulty = 1;
 		
-		int inputLayerSize = 12;
-		int hiddenLayerSize = 30;
+		int inputLayerSize = 84;
+		int hiddenLayerSize = 40;
 		int outputLayerSize = 6;
-		int populationSize = 200;
+		int populationSize = 100;
 		
 		GAthree geneticAlgorithm = new GAthree(populationSize, inputLayerSize, hiddenLayerSize, outputLayerSize);
 		float[][] generation = geneticAlgorithm.generateFreshBatch();
@@ -64,7 +65,7 @@ public class Custom
 		agent.setNeuralNetwork(base);
 		
 		final BasicTask basicTask = new BasicTask(marioAIOptions);
-		marioAIOptions.setLevelDifficulty(1);
+		marioAIOptions.setLevelDifficulty(levelDifficulty);
 		marioAIOptions.setLevelRandSeed(seed);
 		marioAIOptions.setAgent(agent);
 		
@@ -74,15 +75,22 @@ public class Custom
 			scores = new int[populationSize];
 			j++;
 			bestScore = 0;
-			
+			if (j==100)
+			{
+				marioAIOptions.setVisualization(true);
+				marioAIOptions.setFPS(30);
+				base.setWeights(bestChromo);
+				basicTask.runSingleEpisode(1);
+			}
 			for (int i=0; i < populationSize + 1; i++)
 			{
 				if (i == populationSize) // show the best agent
-				{	
+				{	/*
 					marioAIOptions.setVisualization(true);
 					marioAIOptions.setFPS(99);
 					base.setWeights(bestChromo);
 					basicTask.runSingleEpisode(1);
+					*/
 				}
 				else // we are running through the generation
 				{
