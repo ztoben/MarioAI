@@ -5,6 +5,11 @@ package marioManiacs.agents.neuralNetwork;
  * and a list of nodes it will receive values from
  */
 
+/*
+ * File: HiddenNode.java
+ * Author: Jesse Miller, Mat Kakavas
+ * Last modified: 4/15/14
+ */
 public class HiddenNode implements NeuralNode
 {
 	boolean bFire;

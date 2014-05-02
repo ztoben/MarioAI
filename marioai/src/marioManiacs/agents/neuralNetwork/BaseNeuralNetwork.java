@@ -1,5 +1,9 @@
 package marioManiacs.agents.neuralNetwork;
-
+/*
+ * File: BaseNeuralNetwork.java
+ * Author: Jesse, Mat
+ * Last modified: 4/15/14
+ */
 import java.util.Arrays;
 import java.util.Random;
 

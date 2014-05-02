@@ -5,6 +5,12 @@ package marioManiacs.agents.neuralNetwork;
  * Returns a boolean value that represents pushing a button
  */
 
+/*
+ * File: OutputNode.java
+ * Author: Jesse, Mat
+ * Last modified: 4/15/14
+ */
+
 public class OutputNode implements NeuralNode
 {
 	boolean bFire;

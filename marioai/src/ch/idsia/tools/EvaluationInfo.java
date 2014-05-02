@@ -36,14 +36,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
 
-/**
- * Created by IntelliJ IDEA.
- * User: Sergey Karakovskiy
- * Date: Apr 12, 2009
- * Time: 12:44:51 AM
- * Package: .Tools
+/*
+ * File: EvaluationInfo.java
+ * Author: Sergev Karakovskiy Mat Kakavas
+ * Last modified: 4/25/14
  */
-
 public final class EvaluationInfo implements Cloneable
 {
 private static final int MagicNumberUnDef = -42;

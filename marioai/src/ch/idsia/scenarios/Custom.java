@@ -1,31 +1,12 @@
 /*
-// * Copyright (c) 2009-2010, Sergey Karakovskiy and Julian Togelius
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
- *       documentation and/or other materials provided with the distribution.
- *     * Neither the name of the Mario AI nor the
- *       names of its contributors may be used to endorse or promote products
- *       derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
- * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
+ * File: Custom.java
+ * Author: Trent Morris Jesse Miller Mat Kakavas Zach Toben
+ * Last modified: 2/28/14
  */
 
 package ch.idsia.scenarios;
+
+import java.io.IOException;
 
 import ch.idsia.benchmark.tasks.BasicTask;
 import ch.idsia.tools.MarioAIOptions;
@@ -36,7 +17,7 @@ import GeneticAlgorithm.*;
 
 public class Custom
 {
-	public static void main(String[] args)
+	public static void main(String[] args) throws IOException
 	{
 		final MarioAIOptions marioAIOptions = new MarioAIOptions(args);
 		final ParserAgent agent = new ParserAgent("bob");
@@ -48,11 +29,11 @@ public class Custom
 		int newScore = 0;
 		int[] scores;
 		
-		int seed = 1;
+		int seed = 4;
 		int levelDifficulty = 1;
 		
-		int inputLayerSize = 84;
-		int hiddenLayerSize = 40;
+		int inputLayerSize = 52;
+		int hiddenLayerSize = 30;
 		int outputLayerSize = 6;
 		int populationSize = 100;
 		
@@ -75,6 +56,7 @@ public class Custom
 			scores = new int[populationSize];
 			j++;
 			bestScore = 0;
+			
 			if (j==100)
 			{
 				marioAIOptions.setVisualization(true);
@@ -82,10 +64,11 @@ public class Custom
 				base.setWeights(bestChromo);
 				basicTask.runSingleEpisode(1);
 			}
+			
 			for (int i=0; i < populationSize + 1; i++)
 			{
 				if (i == populationSize) // show the best agent
-				{	/*
+				{/*
 					marioAIOptions.setVisualization(true);
 					marioAIOptions.setFPS(99);
 					base.setWeights(bestChromo);
@@ -99,13 +82,18 @@ public class Custom
 					
 					basicTask.runSingleEpisode(1);
 					
-					newScore = fitnessFunction.computeScore(basicTask.getEvaluationInfo());
+					try {
+						newScore = fitnessFunction.computeScore(basicTask.getEvaluationInfo());
+					}
+					catch (Exception IOException){}
+					
 					scores[i] = newScore;
 					
 					if (newScore > bestScore)
 					{
 						bestScore = newScore;
 						bestChromo = generation[i];
+						new Chromosome(bestChromo).chromosomeToFile("//src//EliteMario1.csv");
 					}
 				}
 			}

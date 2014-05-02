@@ -34,25 +34,10 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
-
-/**
- * Created by IntelliJ IDEA.
- * User: Sergey Karakovskiy
- * Date: Apr 25, 2009
- * Time: 9:05:20 AM
- * Package: ch.idsia.tools
- */
-
-/**
- * The <code>MarioAIOptions</code> class handles the command-line options
- * It sets up parameters from command line if there are any.
- * Defaults are used otherwise.
- *
- * @author Sergey Karakovskiy
- * @version 1.0, Apr 25, 2009
- * @see ch.idsia.utils.ParameterContainer
- * @see ch.idsia.benchmark.mario.simulation.SimulationOptions
- * @since MarioAI0.1
+/*
+ * File: MarioAIOptions.java
+ * Author: Sergev Karakovskiy
+ * Last modified: 2/28/14
  */
 
 public final class MarioAIOptions extends SimulationOptions

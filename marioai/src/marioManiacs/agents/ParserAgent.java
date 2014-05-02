@@ -3,8 +3,13 @@
  * That way they can call and use the parseEnvironment() method and easily access the variables
  */
 
-package marioManiacs.agents;
 
+package marioManiacs.agents;
+/*
+ * File: ParserAgent.java
+ * Author: Jesse Miller
+ * Last modified: 4/23/14
+ */
 import java.util.Random;
 import ch.idsia.agents.Agent;
 import ch.idsia.benchmark.mario.environments.Environment;
@@ -22,7 +27,7 @@ public class ParserAgent implements Agent
     protected byte[][] mainGrid;
     protected byte[][] worldState;
     protected int[] marioPosition = new int[2];
-    protected int nodesToSearch = 9;//this represents x AND y dimensions, they should be the same and ODD
+    protected int nodesToSearch = 7;//this represents x AND y dimensions, they should be the same and ODD
     
     protected int marioState; // 2 = fire; 1 = large; 0 = small
     protected boolean bMarioCanJump;
