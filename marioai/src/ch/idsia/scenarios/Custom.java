@@ -25,12 +25,15 @@ public class Custom
 		int bestScore = 0;
 		int newScore = 0;
 		int bestCounter = 0;
-		int seed = 1;
 		Chromosome c;
+		
 		int inputLayerSize = 52;
 		int hiddenLayerSize = 20;
 		int outputLayerSize = 6;
 		int populationSize = 150;
+		int seed = 1;
+		int levelDifficulty = 1;
+		
 		Population p = GAModifier.createFirstGeneration(inputLayerSize, hiddenLayerSize, outputLayerSize, populationSize);
 		Chromosome bestChromo = p.getChromosome(0);
 		BaseNeuralNetwork base = new FullConnectionNeuralNetwork(52,20);
@@ -69,7 +72,7 @@ public class Custom
 				agent.setNeuralNetwork(base);
 
 				final BasicTask basicTask = new BasicTask(marioAIOptions);
-				marioAIOptions.setLevelDifficulty(1);
+				marioAIOptions.setLevelDifficulty(levelDifficulty);
 				marioAIOptions.setLevelRandSeed(seed);
 				//seed++;
 
