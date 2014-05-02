@@ -38,7 +38,7 @@ public class Custom
 		
 		Population p = GAModifier.createFirstGeneration(inputLayerSize, hiddenLayerSize, outputLayerSize, populationSize);
 		Chromosome bestChromo = p.getChromosome(0);
-		BaseNeuralNetwork base = new FullConnectionNeuralNetwork(52,20);
+		BaseNeuralNetwork base = new FullConnectionNeuralNetwork(inputLayerSize,hiddenLayerSize);
 		base.createConnections();
 		while(true)
 		{ // Base this off score eventually or just certain number of generations
