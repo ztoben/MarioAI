@@ -27,6 +27,8 @@ public class Custom
 		int bestCounter = 0;
 		Chromosome c;
 		
+		MarioManiacsFitnessFunction fitnessFunction = new MarioManiacsFitnessFunction();
+		
 		int inputLayerSize = 52;
 		int hiddenLayerSize = 20;
 		int outputLayerSize = 6;
@@ -97,7 +99,7 @@ public class Custom
 
 				try
 				{
-					newScore = basicTask.getEvaluationInfo().computeWeightedFitness();
+					newScore = fitnessFunction.computeScore(basicTask.getEvaluationInfo());
 				} 
 				catch (NullPointerException e)
 				{
